@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
+// TODO: add clean up for game->cam
 void	init_cam(t_game *game)
 {
 	game->cam = malloc(sizeof(t_camera));

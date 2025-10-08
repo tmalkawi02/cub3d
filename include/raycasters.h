@@ -15,6 +15,10 @@
 
 # define WIN_HEIGHT 1280.0f
 # define WIN_WIDTH	720.0f
+# define N_PATH		"./assets/one.xpm"
+# define S_PATH		"./assets/two.xpm"
+# define E_PATH		"./assets/three.xpm"
+# define W_PATH		"./assets/four.xpm"
 
 typedef struct s_texture
 {
@@ -53,5 +57,7 @@ void	clean_game(t_game *game);
 void	init_game(t_game *game);
 
 void	init_cam(t_game *game);
+
+void	init_textures(t_game *game);
 
 #endif

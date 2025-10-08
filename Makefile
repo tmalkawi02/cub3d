@@ -17,6 +17,7 @@ SRC=main.c \
 
 SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_cam.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_textures.c \
 
 LIB_PATH=lib
 COMPILER=clang
