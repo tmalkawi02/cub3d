@@ -15,8 +15,8 @@ SRC_PATH=src
 INITIALIZERS_PATH=initializers
 SRC=main.c \
 
-
 SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_cam.c \
 
 LIB_PATH=lib
 COMPILER=clang

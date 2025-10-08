@@ -52,4 +52,6 @@ void	clean_game(t_game *game);
 
 void	init_game(t_game *game);
 
+void	init_cam(t_game *game);
+
 #endif
