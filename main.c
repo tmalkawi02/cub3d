@@ -12,7 +12,12 @@
 
 #include <stdlib.h>
 
+#define MAX_ARGS 2
+
 int	main(int ac, char **av)
 {
+	(void) av;
+	if (ac != MAX_ARGS)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
