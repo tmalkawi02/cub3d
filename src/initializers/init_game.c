@@ -15,13 +15,12 @@
 #include "mlx.h"
 #include <stdlib.h>
 
-// TODO: Add clean up for game->mlx
 void	init_game(t_game *game)
 {
+	ft_bzero(game, sizeof(t_game));
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
-		return ;
-	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-	ft_bzero(game, sizeof(t_game));
+		return (clean_game(game));
+	game->win = mlx_new_window(game->mlx, WIN_HEIGHT, WIN_WIDTH, "cub3d");
 	return ;
 }

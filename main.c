@@ -11,13 +11,18 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "raycasters.h"
 
 #define MAX_ARGS 2
 
 int	main(int ac, char **av)
 {
+	t_game	game;
+
 	(void) av;
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
+	init_game(&game);
+	clean_game(&game);
 	return (EXIT_SUCCESS);
 }

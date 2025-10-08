@@ -20,9 +20,18 @@ void	clean_game(t_game *game)
 {
 	clean_textures(game);
 	free(game->cam);
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
+	if (game->mlx)
+	{
+		if (game->win)
+		{
+			mlx_destroy_window(game->mlx, game->win);
+			game->win = NULL;
+		}
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		game->mlx = NULL;
+	}
+	exit(EXIT_FAILURE);
 }
 
 static void	clean_textures(t_game *game)

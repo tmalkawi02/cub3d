@@ -14,11 +14,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
-// TODO: add clean up for game->cam
 void	init_cam(t_game *game)
 {
 	game->cam = malloc(sizeof(t_camera));
 	if (game->cam == NULL)
-		return ;
+		return (clean_game(game));
 	ft_bzero(game->cam, sizeof(t_camera));
 }
