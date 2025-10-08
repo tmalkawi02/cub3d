@@ -1,0 +1,103 @@
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# ==============
+# ----TALAL-----
+# ==============
+
+# object files
+*.out
+*.o
+*.a
+libft/*.a
+
+# visual studio code junk
+.vscode/**
+.vs*
+
+# others
+*.txt
+.nfs*
+.cache
+
+# test suits
+tests/
+test/*.c
+
+# maps
+maps/
+maps
+maps/*
+
+# lsp related
+compile_commands.json
+
+# binary files
+build/
+build/**
+
+# third party libraries
+
+# project binaries
+get_next_line
+push_swap
+minishell
+cub3d
+norminette/*
+norminette
+
+### openai bloatware
+.bun/
+.bun
+.bun/*
+.bun/**
