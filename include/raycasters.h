@@ -20,6 +20,26 @@
 # define E_PATH		"./assets/three.xpm"
 # define W_PATH		"./assets/four.xpm"
 
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
+typedef struct s_player
+{
+	int	kup;
+	int	kdown;
+	int	kright;
+	int	kleft;
+	int	rrotate;
+	int	lrotate;
+}	t_player;
+
 typedef struct s_texture
 {
 	void	*img;
@@ -50,6 +70,7 @@ typedef struct s_game
 	void		*win;
 	t_camera	*cam;	
 	t_textures	*texs;
+	t_player	*play;
 }	t_game;
 
 void	clean_game(t_game *game);

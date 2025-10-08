@@ -19,7 +19,10 @@ static void	clean_textures(t_game *game);
 void	clean_game(t_game *game)
 {
 	clean_textures(game);
-	free(game->cam);
+	if (game->cam)
+		free(game->cam);
+	if (game->play)
+		free(game->play);
 	if (game->mlx)
 	{
 		if (game->win)

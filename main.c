@@ -11,9 +11,14 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "handlers.h"
 #include "raycasters.h"
+#include "mlx.h"
+#include <X11/X.h>
 
 #define MAX_ARGS 2
+
+static int	destroy_button(t_game *game);
 
 int	main(int ac, char **av)
 {
@@ -23,6 +28,18 @@ int	main(int ac, char **av)
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
 	init_game(&game);
+	mlx_hook(game.win, ON_DESTROY, ButtonPressMask, &destroy_button, &game);
+	mlx_hook(game.win, ON_KEYDOWN, KeyPressMask,
+		&k_release, &game);
+	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
+		&k_press, &game);
+	mlx_loop(game.mlx);
 	clean_game(&game);
 	return (EXIT_SUCCESS);
+}
+
+static int	destroy_button(t_game *game)
+{
+	clean_game(game);
+	return (exit(EXIT_SUCCESS), EXIT_SUCCESS);
 }

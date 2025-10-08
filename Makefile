@@ -13,14 +13,19 @@
 NAME=cub3d
 SRC_PATH=src
 INITIALIZERS_PATH=initializers
+HANDLERS_PATH=handlers
 CLEAN_PATH=cleaners
 SRC=main.c \
 
 SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_cam.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_textures.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player.c \
 
 SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
+
+SRC += $(SRC_PATH)/$(HANDLERS_PATH)/k_press.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/k_release.c
 
 LIB_PATH=lib
 COMPILER=clang

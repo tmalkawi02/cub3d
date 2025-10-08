@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "initializers.h"
 #include "raycasters.h"
 #include "mlx.h"
 #include <stdlib.h>
 
 void	init_game(t_game *game)
 {
-	ft_bzero(game, sizeof(t_game));
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return (clean_game(game));
 	game->win = mlx_new_window(game->mlx, WIN_HEIGHT, WIN_WIDTH, "cub3d");
+	init_cam(game);
 	return ;
 }
