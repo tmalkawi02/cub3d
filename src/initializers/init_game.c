@@ -20,7 +20,7 @@ void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
-		return (exit(EXIT_FAILURE));
+		return ;
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	ft_bzero(game, sizeof(t_game));
 	return ;
