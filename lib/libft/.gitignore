@@ -1,0 +1,10 @@
+*.out
+*.o
+*.a
+.vscode/**
+.vs*
+*.test.c
+*.txt
+push_swap
+.nfs*
+.cache
