@@ -123,6 +123,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	char		**map;
 	t_camera	*cam;	
 	t_textures	*texs;
 	t_player	*play;
@@ -133,5 +134,7 @@ typedef struct s_game
 int		render_loop(t_game *game);
 
 void	set_ray_values(t_game *game, int x);
+
+void	perform_dda(t_game *game);
 
 #endif

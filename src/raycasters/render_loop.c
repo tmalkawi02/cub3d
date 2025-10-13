@@ -21,6 +21,7 @@ int	render_loop(t_game *game)
 	while (++x < WIN_WIDTH)
 	{
 		set_ray_values(game, x);
+		perform_dda(game);
 	}
 	return (EXIT_SUCCESS);
 }
