@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 13:08:37 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/13 14:01:48 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,22 @@ int	check_walls(int fd)
 
 }
 
-/**
- * @brief Set the colour of a direction
- * 
- * @param map 
- * @param file 
- * @return int 
- */
-int	set_colour(char *dir, char *file)
+int	build_map(int fd, t_game *game)
 {
-
+	
 }
 
-int	parse_map(char *mapfile)
+int	parse_map(char *mapfile, t_game *game)
 {
 	int		map_fd;
 	char 	*line;
 
 	if (open_map(&map_fd, mapfile) == -1)
 		return (err("Could not open map\n", 1));
+	if (assign_textures(map_fd, game->texs) == -1)
+		return (err("Could not assign textures\n", 2));
+	if (assign_colours(map_fd, game) == -1)
+		return (err("Could not assign colours", 3));
+	if (build_map(map_fd, game) == -1)
+		return (err("Could not build map\n", 4));
 }

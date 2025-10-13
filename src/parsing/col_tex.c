@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   col_tex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 13:12:41 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 13:58:48 by aborel           ###   ########.fr       */
+/*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
+/*   Updated: 2025/10/13 14:01:22 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "raycasters.h"
+#include "libft.h"
 
-# include <unistd.h>
-# include <fcntl.h>
+/**
+ * @brief Set the colour of a direction
+ * 
+ * @param map 
+ * @param file 
+ * @return int 
+ */
+int	set_colour(char *dir, char *file)
+{
 
-int	parse_map(char *mapfile, t_game *game);
-int	open_map(int *map_fd, char *mapfile);
-int	err(char *s, int code);
-int	assign_textures(int fd, t_textures *tex);
-int	assign_colours(int fd, t_game *game);
-#endif
+}
+int	assign_colours(int fd, t_game *game)
+{
+
+}
+
+int	assign_textures(int fd, t_textures *tex)
+{
+	
+}
