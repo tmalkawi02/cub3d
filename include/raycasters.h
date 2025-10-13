@@ -66,6 +66,15 @@ typedef struct s_player
 	float	plane_y;
 }	t_player;
 
+typedef struct s_px_data
+{
+	int		len_line;
+	int		endian;
+	int		bpp;
+	char	*addr;
+	void	*img;
+}	t_px_data;
+
 typedef struct s_ray
 {
 	float	camera_x;
@@ -129,6 +138,7 @@ typedef struct s_game
 	t_player	*play;
 	t_wall		*wall;
 	t_ray		*ray;
+	t_px_data	*px_data;
 }	t_game;
 
 int		render_loop(t_game *game);
