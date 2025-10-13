@@ -25,4 +25,6 @@ void	init_player(t_game *game);
 
 void	init_wall(t_game *game);
 
+void	init_ray(t_game *game);
+
 #endif // !INITIALIZERS_H
