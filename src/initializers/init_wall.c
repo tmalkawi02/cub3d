@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initializers.h                                     :+:      :+:    :+:   */
+/*   init_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 14:58:08 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/08 14:58:08 by tmalkawi         ###   ########.fr       */
+/*   Created: 2025/10/13 13:21:41 by tmalkawi          #+#    #+#             */
+/*   Updated: 2025/10/13 13:21:41 by tmalkawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITIALIZERS_H
-# define INITIALIZERS_H
+#include "initializers.h"
+#include <stdlib.h>
+#include "cleaners.h"
+#include "libft.h"
 
-# include "raycasters.h"
-
-void	init_game(t_game *game);
-
-void	init_cam(t_game *game);
-
-void	init_textures(t_game *game);
-
-void	init_player(t_game *game);
-
-void	init_wall(t_game *game);
-
-#endif // !INITIALIZERS_H
+void	init_wall(t_game *game)
+{
+	if (game == NULL)
+		return ;
+	game->wall = malloc(sizeof(t_wall));
+	if (game->wall == NULL)
+		return (clean_game(game));
+	ft_bzero(game->wall, sizeof(t_wall));
+}

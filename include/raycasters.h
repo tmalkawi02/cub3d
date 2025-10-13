@@ -126,6 +126,7 @@ typedef struct s_game
 	t_camera	*cam;	
 	t_textures	*texs;
 	t_player	*play;
+	t_wall		*wall;
 }	t_game;
 
 int	render_loop(t_game *game);

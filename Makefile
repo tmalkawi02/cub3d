@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sachanai <sachanai@student.42.fr>          +#+  +:+       +#+         #
+#    By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/16 16:17:55 by tmalkawi          #+#    #+#              #
-#    Updated: 2025/09/22 16:33:31 by sachanai         ###   ########.fr        #
+#    Created: 2025/10/13 13:27:03 by tmalkawi          #+#    #+#              #
+#    Updated: 2025/10/13 13:27:03 by tmalkawi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,21 @@ SRC_PATH=src
 INITIALIZERS_PATH=initializers
 HANDLERS_PATH=handlers
 CLEAN_PATH=cleaners
+RAYCASTERS_PATH=raycasters
 SRC=main.c \
 
 SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_cam.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_textures.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_wall.c \
 
 SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
 
 SRC += $(SRC_PATH)/$(HANDLERS_PATH)/k_press.c \
 	   $(SRC_PATH)/$(HANDLERS_PATH)/k_release.c
+
+SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c
 
 LIB_PATH=lib
 COMPILER=clang

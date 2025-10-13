@@ -25,5 +25,6 @@ void	init_game(t_game *game)
 	init_cam(game);
 	init_player(game);
 	init_textures(game);
+	init_wall(game);
 	return ;
 }
