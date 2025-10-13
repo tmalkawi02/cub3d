@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cleaners.h"
 #include "raycasters.h"
 #include <stdlib.h>
 #include "libft.h"

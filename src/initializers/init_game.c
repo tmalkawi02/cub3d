@@ -14,6 +14,7 @@
 #include "raycasters.h"
 #include "mlx.h"
 #include <stdlib.h>
+#include "cleaners.h"
 
 void	init_game(t_game *game)
 {

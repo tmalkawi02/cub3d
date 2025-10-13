@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "raycasters.h"
 #include <stdlib.h>
+#include "cleaners.h"
 
 void	init_player(t_game *game)
 {

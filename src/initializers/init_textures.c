@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "raycasters.h"
 #include <stdlib.h>
+#include "cleaners.h"
 
 static void	set_address_of_texture(t_game *game);
 

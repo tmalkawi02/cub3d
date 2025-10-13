@@ -14,6 +14,8 @@
 #include "handlers.h"
 #include "raycasters.h"
 #include "mlx.h"
+#include "initializers.h"
+#include "cleaners.h"
 #include <X11/X.h>
 
 #define MAX_ARGS 2
