@@ -23,6 +23,10 @@ void	clean_game(t_game *game)
 		free(game->cam);
 	if (game->play)
 		free(game->play);
+	if (game->ray)
+		free(game->ray);
+	if (game->wall)
+		free(game->wall);
 	if (game->mlx)
 	{
 		if (game->win)
