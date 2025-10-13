@@ -22,6 +22,8 @@ int	render_loop(t_game *game)
 	{
 		set_ray_values(game, x);
 		perform_dda(game);
+		calculate_wall(game);
+		calculate_wall(game);
 	}
 	return (EXIT_SUCCESS);
 }

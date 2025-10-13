@@ -137,4 +137,6 @@ void	set_ray_values(t_game *game, int x);
 
 void	perform_dda(t_game *game);
 
+void	calculate_wall(t_game *game);
+
 #endif
