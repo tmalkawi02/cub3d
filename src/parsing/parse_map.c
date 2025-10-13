@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 14:01:48 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/13 16:42:47 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ int	parse_map(char *mapfile, t_game *game)
 	char 	*line;
 
 	if (open_map(&map_fd, mapfile) == -1)
-		return (err("Could not open map\n", 1));
+		return (err("Error\nCould not open map\n", 1));
 	if (assign_textures(map_fd, game->texs) == -1)
-		return (err("Could not assign textures\n", 2));
-	if (assign_colours(map_fd, game) == -1)
-		return (err("Could not assign colours", 3));
+		return (err("Error\nCould not assign textures\n", 2));
 	if (build_map(map_fd, game) == -1)
-		return (err("Could not build map\n", 4));
+		return (err("Error\nCould not build map\n", 3));
 }

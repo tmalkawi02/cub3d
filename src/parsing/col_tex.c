@@ -6,42 +6,100 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 15:45:59 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/13 16:41:19 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasters.h"
 #include "libft.h"
+#include "parsing.h"
 
 /**
  * @brief Set the tex of a direction
  * 
  * @param map 
  * @param file 
- * @return int 
+ * @return int -1 if failed
  */
-int	tex_file(t_texture *dir, char *file)
+int	tex_file(t_texture *dir, char *line)
 {
+	int		i;
+	char	*path;
 
+	i = 0;
+	while (!is_whitespace(line[i]))
+		i++;
+	while (is_whitespace(line[i]))
+		i++;
+	path = next_word(&line[i]);
+	if (!path)
+		return (-1);
+	if (dir)
+		free(dir);
+	dir = path;
+	return (0);
 }
+
+int	next_colour(char *s, bool end)
+{
+	int	i;
+
+	i = 0;
+	while (ft_isdigit(s[i]))
+		i++;
+	i += skip_whitespace(&s[i]);
+	if (!end)
+	{
+		if (s[i] != ',')
+			return (-1);
+		i++;
+	}
+	i += skip_whitespace(&s[i]);
+}
+
 int	assign_colours(unsigned long *ptr, char *line)
 {
+	int	i;
+	int	r;
+	int	g;
+	int	b;
 
+	i = 2;
+	r = ft_atoi(&line[i]);
+	i += next_colour(&line[i], 0);
+	if (i = -1)
+		return (-1);
+	g = ft_atoi(&line[i]);
+	i += next_colour(&line[i], 0);
+	if (i = -1)
+		return (-1);
+	b = ft_atoi(&line[i]);
+	i += next_colour(&line[i], 1);
+	if (line[i])
+		return (-1);
+	*ptr = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	return (0);
 }
+
 int	set_texture(t_game *game, char *line, char *id)
 {
+	int	ret;
+
 	if (!wordcmp(id, "NO") || !wordcmp(id, "N"))
-		tex_file(game->texs->north, line);
+		ret = tex_file(game->texs->north, line);
 	else if (!wordcmp(id, "SO") || !wordcmp(id, "S"))
-		tex_file(game->texs->south, line);
+		ret = tex_file(game->texs->south, line);
 	else if (!wordcmp(id, "WE") || !wordcmp(id, "W"))
-		tex_file(game->texs->west, line);
+		ret = tex_file(game->texs->west, line);
 	else if (!wordcmp(id, "EA") || !wordcmp(id, "E"))
-		tex_file(game->texs->east, line);
+		ret = tex_file(game->texs->east, line);
 	else if (!wordcmp(id, "C"))
-		assign_colours(&game->ceiling, line);
+		ret = assign_colours(&game->ceiling, line);
 	else if (!wordcmp(id, "F"))
-		assign_colours(&game->floor, line);
+		ret = assign_colours(&game->floor, line);
+	else
+		ret = -1;
+	return (ret);
 }
 
 int	assign_textures(int fd, t_game *game)
