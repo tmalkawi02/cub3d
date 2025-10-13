@@ -60,6 +60,24 @@ typedef struct s_player
 	float	plane_y;
 }	t_player;
 
+typedef struct s_ray
+{
+	float	camera_x;
+	float	dir_x;
+	float	dir_y;
+	int		map_x;
+	int		map_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+}	t_ray;
+
 typedef struct s_texture
 {
 	void	*img;
