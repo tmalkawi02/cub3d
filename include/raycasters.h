@@ -19,6 +19,12 @@
 # define S_PATH		"./assets/two.xpm"
 # define E_PATH		"./assets/three.xpm"
 # define W_PATH		"./assets/four.xpm"
+# ifndef MOVE_SPEED
+#  define MOVE_SPEED 0.05f
+# endif
+# ifndef ROT_SPEED
+#  define ROT_SPEED 0.5f
+# endif
 
 typedef enum e_event {
 	ON_KEYDOWN = 2,
