@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:04:14 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 13:18:05 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/13 14:08:01 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "libft.h"
 #include "parsing.h"
 
-int	err(char *s, int code)
-{
-	while (*s)
-		write(2, s++, 1);
-	return (code);
-}
 
 /**
  * @brief checks the map is a ".cub" file, opens the map
