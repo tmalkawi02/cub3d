@@ -78,6 +78,17 @@ typedef struct s_ray
 	int		side;
 }	t_ray;
 
+typedef struct s_wall
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	float	wall_x;
+	int		tex_x;
+	float	step;
+	float	tex_pos;
+}	t_wall;
+
 typedef struct s_texture
 {
 	void	*img;
