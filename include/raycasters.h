@@ -20,7 +20,7 @@
 # define E_PATH		"./assets/three.xpm"
 # define W_PATH		"./assets/four.xpm"
 
-enum {
+typedef enum e_event {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEDOWN = 4,
@@ -28,16 +28,36 @@ enum {
 	ON_MOUSEMOVE = 6,
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
-};
+}	t_event;
 
+/*
+ * @field int kup w key
+ * @field int kdown s key
+ * @field int kright d key
+ * @field int kleft a key
+ * @field rrotate right arrow key
+ * @field lrotate left arrow key
+ * @field pos_x Player X position (exact)
+ * @field pos_y PLayer Y postion (exact)
+ * @field dir_x Direction Vector X
+ * @field dir_y Direction Vector Y
+ * @field plane_x Camera Plane X
+ * @field plane_y Camera Plane Y
+ */
 typedef struct s_player
 {
-	int	kup;
-	int	kdown;
-	int	kright;
-	int	kleft;
-	int	rrotate;
-	int	lrotate;
+	int		kup;
+	int		kdown;
+	int		kright;
+	int		kleft;
+	int		rrotate;
+	int		lrotate;
+	float	pos_x;
+	float	pos_y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
 }	t_player;
 
 typedef struct s_texture
@@ -72,13 +92,5 @@ typedef struct s_game
 	t_textures	*texs;
 	t_player	*play;
 }	t_game;
-
-void	clean_game(t_game *game);
-
-void	init_game(t_game *game);
-
-void	init_cam(t_game *game);
-
-void	init_textures(t_game *game);
 
 #endif
