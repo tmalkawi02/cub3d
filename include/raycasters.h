@@ -130,6 +130,8 @@ typedef struct s_game
 	t_ray		*ray;
 }	t_game;
 
-int	render_loop(t_game *game);
+int		render_loop(t_game *game);
+
+void	set_ray_values(t_game *game, int x);
 
 #endif

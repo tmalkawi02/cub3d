@@ -30,7 +30,8 @@ SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
 SRC += $(SRC_PATH)/$(HANDLERS_PATH)/k_press.c \
 	   $(SRC_PATH)/$(HANDLERS_PATH)/k_release.c
 
-SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c
+SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
+	   $(SRC_PATH)/$(RAYCASTERS_PATH)/set_ray_values.c
 
 LIB_PATH=lib
 COMPILER=clang

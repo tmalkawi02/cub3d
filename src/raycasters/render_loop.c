@@ -11,9 +11,16 @@
 /* ************************************************************************** */
 
 #include "raycasters.h"
+#include <stdlib.h>
 
 int	render_loop(t_game *game)
 {
-	(void) game;
-	return (1);
+	int	x;
+
+	x = -1;
+	while (++x < WIN_WIDTH)
+	{
+		set_ray_values(game, x);
+	}
+	return (EXIT_SUCCESS);
 }
