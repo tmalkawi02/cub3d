@@ -15,6 +15,7 @@
 #include "mlx.h"
 #include <stdlib.h>
 #include "cleaners.h"
+#include "helpers.h"
 
 void	init_game(t_game *game)
 {
@@ -22,6 +23,7 @@ void	init_game(t_game *game)
 	if (game->mlx == NULL)
 		return (clean_game(game));
 	game->win = mlx_new_window(game->mlx, WIN_HEIGHT, WIN_WIDTH, "cub3d");
+	game->map = get_map();
 	init_cam(game);
 	init_player(game);
 	init_textures(game);

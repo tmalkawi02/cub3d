@@ -16,6 +16,7 @@ INITIALIZERS_PATH=initializers
 HANDLERS_PATH=handlers
 CLEAN_PATH=cleaners
 RAYCASTERS_PATH=raycasters
+HELPERS_PATH=helpers
 SRC=main.c \
 
 SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
@@ -26,6 +27,8 @@ SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_ray.c \
 
 SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
+
+SRC += $(SRC_PATH)/$(HELPERS_PATH)/get_map.c
 
 SRC += $(SRC_PATH)/$(HANDLERS_PATH)/k_press.c \
 	   $(SRC_PATH)/$(HANDLERS_PATH)/k_release.c
