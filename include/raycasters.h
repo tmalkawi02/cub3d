@@ -128,4 +128,6 @@ typedef struct s_game
 	t_player	*play;
 }	t_game;
 
+int	render_loop(t_game *game);
+
 #endif

@@ -35,6 +35,7 @@ int	main(int ac, char **av)
 		&k_release, &game);
 	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
 		&k_press, &game);
+	mlx_loop_hook(game.mlx, &render_loop, &game);
 	mlx_loop(game.mlx);
 	clean_game(&game);
 	return (EXIT_SUCCESS);
