@@ -22,5 +22,7 @@ void	init_game(t_game *game)
 		return (clean_game(game));
 	game->win = mlx_new_window(game->mlx, WIN_HEIGHT, WIN_WIDTH, "cub3d");
 	init_cam(game);
+	init_player(game);
+	init_textures(game);
 	return ;
 }

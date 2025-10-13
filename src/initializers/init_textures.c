@@ -21,43 +21,43 @@ void	init_textures(t_game *game)
 {
 	game->texs = malloc(sizeof(t_textures));
 	if (game->texs == NULL)
-		return (clean_game(game));
+		return ;
 	ft_bzero(game->texs, sizeof(t_textures));
 	game->texs->north = malloc(sizeof(t_texture));
 	if (game->texs->north == NULL)
-		return (clean_game(game));
-	ft_bzero(game->texs->north, sizeof(t_textures));
+		return ;
+	ft_bzero(game->texs->north, sizeof(t_texture));
 	game->texs->south = malloc(sizeof(t_texture));
 	if (game->texs->south == NULL)
-		return (clean_game(game));
-	ft_bzero(game->texs->south, sizeof(t_textures));
+		return ;
+	ft_bzero(game->texs->south, sizeof(t_texture));
 	game->texs->east = malloc(sizeof(t_texture));
 	if (game->texs->east == NULL)
-		return (clean_game(game));
-	ft_bzero(game->texs->east, sizeof(t_textures));
+		return ;
+	ft_bzero(game->texs->east, sizeof(t_texture));
 	game->texs->west = malloc(sizeof(t_texture));
 	if (game->texs->west == NULL)
-		return (clean_game(game));
-	ft_bzero(game->texs->west, sizeof(t_textures));
+		return ;
+	ft_bzero(game->texs->west, sizeof(t_texture));
 	set_address_of_texture(game);
 }
 
 static void	set_address_of_texture(t_game *game)
 {
 	game->texs->north->img = mlx_xpm_file_to_image(game->mlx, N_PATH,
-			&game->texs->north->width, &game->texs->north->width);
+			&game->texs->north->width, &game->texs->north->height);
 	if (game->texs->north->img == NULL)
 		return (clean_game(game));
-	game->texs->south->img = mlx_xpm_file_to_image(game->mlx, N_PATH,
-			&game->texs->south->width, &game->texs->south->width);
+	game->texs->south->img = mlx_xpm_file_to_image(game->mlx, S_PATH,
+			&game->texs->south->width, &game->texs->south->height);
 	if (game->texs->south->img == NULL)
 		return (clean_game(game));
-	game->texs->east->img = mlx_xpm_file_to_image(game->mlx, N_PATH,
-			&game->texs->east->width, &game->texs->east->width);
-	if (game->texs->south->img == NULL)
+	game->texs->east->img = mlx_xpm_file_to_image(game->mlx, E_PATH,
+			&game->texs->east->width, &game->texs->east->height);
+	if (game->texs->east->img == NULL)
 		return (clean_game(game));
-	game->texs->south->img = mlx_xpm_file_to_image(game->mlx, N_PATH,
-			&game->texs->west->width, &game->texs->west->width);
-	if (game->texs->north->img == NULL)
+	game->texs->west->img = mlx_xpm_file_to_image(game->mlx, W_PATH,
+			&game->texs->west->width, &game->texs->west->height);
+	if (game->texs->west->img == NULL)
 		return (clean_game(game));
 }

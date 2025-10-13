@@ -39,6 +39,7 @@ void	clean_game(t_game *game)
 
 static void	clean_textures(t_game *game)
 {
+	(void) game;
 	if (game->texs == NULL)
 		return ;
 	if (game->texs->north)
