@@ -18,7 +18,7 @@ bool	is_wall(t_game *game, int x, int y)
 {
 	char	c;
 
-	if (x < 0 || y < 0)
+	if (x < 0 || y < 0 || x > 32 || y > 13)
 		return (true);
 	c = game->map[y][x];
 	if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
