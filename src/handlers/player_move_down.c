@@ -20,8 +20,8 @@ void	player_move_down(t_game *game)
 
 	new_x = game->play->pos_x - game->play->dir_x * MOVE_SPEED;
 	new_y = game->play->pos_y - game->play->dir_y * MOVE_SPEED;
-	if (game->map[(int)new_y][(int)game->play->pos_x] == 0)
+	if (game->map[(int)new_y][(int)game->play->pos_x] == '0')
 		game->play->pos_y = new_y;
-	if (game->map[(int)game->play->pos_y][(int)new_x])
+	if (game->map[(int)game->play->pos_y][(int)new_x] == '0')
 		game->play->pos_x = new_x;
 }
