@@ -16,6 +16,6 @@ void	init_player_backward_direction(t_game *game)
 {
 	game->play->dir_x = 0.0f;
 	game->play->dir_y = 1.0f;
-	game->play->plane_x = -0.66;
+	game->play->plane_x = -0.66f;
 	game->play->plane_y = 0.0f;
 }
