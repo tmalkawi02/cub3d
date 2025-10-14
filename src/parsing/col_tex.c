@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 13:56:59 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 16:01:33 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	next_colour(char *s, bool end)
 	int	i;
 
 	i = 0;
+	i += skip_whitespace(&s[i]);
 	while (ft_isdigit(s[i]))
 		i++;
 	i += skip_whitespace(&s[i]);
@@ -68,12 +69,8 @@ int	assign_colours(unsigned long *ptr, char *line)
 	i = 2;
 	r = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 0);
-	if (i == -1)
-		return (-1);
 	g = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 0);
-	if (i == -1)
-		return (-1);
 	b = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 1);
 	if (line[i])
@@ -114,7 +111,10 @@ int	assign_textures(int fd, t_game *game)
 		line = get_next_line(fd);
 		i = skip_whitespace(line);
 		if (!line[i])
+		{
+			free(line);
 			continue ;
+		}
 		id = next_word(&line[i]);
 		if (id == 0)
 		{

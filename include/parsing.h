@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:12:41 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 13:22:42 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 15:31:06 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int		parse_map(char *mapfile, t_game *game);
 int		open_map(int *map_fd, char *mapfile);
 int		initialise_textures(t_textures *tex);
-int		err(char *s, t_game *game);
+int		parsing_err(char *s, t_game *game, int fd);
 int		assign_textures(int fd, t_game *game);
 int		assign_colours(unsigned long *ptr, char *line);
 int		is_whitespace(char c);

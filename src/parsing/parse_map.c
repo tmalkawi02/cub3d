@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 13:23:17 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 16:25:36 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ int	parse_map(char *mapfile, t_game *game)
 	int			map_fd;
 
 	if (open_map(&map_fd, mapfile) == -1)
-		return (err("Error\nCould not open map\n", game));
+		return (parsing_err("Error\nCould not open map\n", game, map_fd));
 	game->texs = (t_textures *)ft_calloc(1, sizeof(t_textures));
 	if (!game->texs)
 		return (0);
 	if (!initialise_textures(game->texs))
-		return(err("Error\nTexture memory allocation failed\n", game));
+		return(parsing_err("Error\nTexture memory allocation failed\n", game, map_fd));
 	if (assign_textures(map_fd, game) == -1)
-		return (err("Error\nCould not assign textures\n", game));
+		return (parsing_err("Error\nCould not assign textures\n", game, map_fd));
 	if (check_textures(game) == -1)
-		return (err("Error\nNot all textures assigned\n", game));
+		return (parsing_err("Error\nNot all textures assigned\n", game, map_fd));
 	// if (build_map(map_fd, game) == -1)
 	// 	return (err("Error\nCould not build map\n", game));
+	close(map_fd);
+	get_next_line(-1);
 	return (0);
 }

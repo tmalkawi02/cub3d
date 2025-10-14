@@ -6,18 +6,19 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 13:43:35 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 15:30:50 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasters.h"
 #include "libft.h"
 
-int	err(char *s, t_game *game)
+int	parsing_err(char *s, t_game *game, int fd)
 {
 	while (*s)
 		write(2, s++, 1);
 	clean_game(game);
+	close(fd);
 	return (-1);
 }
 
