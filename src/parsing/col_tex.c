@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 16:01:33 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 18:46:59 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,18 @@ int	assign_textures(int fd, t_game *game)
 			free(line);
 			continue ;
 		}
+		if (ft_isdigit(line[i]))
+		{
+			free(line);
+			break ;
+		}
 		id = next_word(&line[i]);
 		if (id == 0)
 		{
 			free(line);
 			continue ;
 		}
-		if (ft_isdigit(line[i]))
-			break ;
+		
 		if (set_texture(game, &line[i], id) == -1)
 		{
 			free_assign_textures(line, id);
