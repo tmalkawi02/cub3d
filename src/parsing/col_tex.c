@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 16:41:19 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 13:56:59 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	tex_file(t_texture *dir, char *line)
 	path = next_word(&line[i]);
 	if (!path)
 		return (-1);
-	if (dir)
-		free(dir);
-	dir = path;
+	if (dir->tex_path)
+		free(dir->tex_path);
+	dir->tex_path = path;
 	return (0);
 }
 
@@ -55,6 +55,7 @@ int	next_colour(char *s, bool end)
 		i++;
 	}
 	i += skip_whitespace(&s[i]);
+	return (i);
 }
 
 int	assign_colours(unsigned long *ptr, char *line)
@@ -67,11 +68,11 @@ int	assign_colours(unsigned long *ptr, char *line)
 	i = 2;
 	r = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 0);
-	if (i = -1)
+	if (i == -1)
 		return (-1);
 	g = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 0);
-	if (i = -1)
+	if (i == -1)
 		return (-1);
 	b = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 1);
@@ -112,17 +113,22 @@ int	assign_textures(int fd, t_game *game)
 	{
 		line = get_next_line(fd);
 		i = skip_whitespace(line);
+		if (!line[i])
+			continue ;
 		id = next_word(&line[i]);
 		if (id == 0)
 		{
 			free(line);
 			continue ;
 		}
+		if (ft_isdigit(line[i]))
+			break ;
 		if (set_texture(game, &line[i], id) == -1)
 		{
-			free(line);
-			free(id);
+			free_assign_textures(line, id);
 			return (-1);
 		}
+		free_assign_textures(line, id);
 	}
+	return (0);
 }

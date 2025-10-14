@@ -6,18 +6,19 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/13 15:34:42 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 13:43:35 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasters.h"
 #include "libft.h"
 
-int	err(char *s, int code)
+int	err(char *s, t_game *game)
 {
 	while (*s)
 		write(2, s++, 1);
-	return (code);
+	clean_game(game);
+	return (-1);
 }
 
 int	is_whitespace(char c)
@@ -51,8 +52,13 @@ int	wordcmp(char *s1, char *s2)
 	if (s1[0] == '\0' && s2[0] == '\0')
 		return (0);
 	i = 0;
-	while (s1[i] && s2[i] && !is_whitespace(s1[i]) && !is_whitespace(s2[i]))
-		i++;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		{
+			if (!is_whitespace(s1[i]))
+				break;
+			else
+				i++;
+		}
 	a = s1[i];
 	b = s2[i];
 	if (is_whitespace((char)a))
@@ -67,7 +73,6 @@ char	*next_word(char *s)
 	int		i;
 	int		len;
 	char	*word;
-	int		quote[2];
 
 	if (!s)
 		return (NULL);
@@ -75,7 +80,7 @@ char	*next_word(char *s)
 	len = 0;
 	while (s[i + len])
 	{
-		if (!s[i] || s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
+		if (!s[i + len] || s[i + len] == ' ' || (s[i + len] >= 9 && s[i + len] <= 13))
 			break ;
 		len ++;
 	}
