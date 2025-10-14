@@ -29,4 +29,12 @@ void	init_ray(t_game *game);
 
 void	init_px_data(t_game *game);
 
+void	init_player_right_direction(t_game *game);
+
+void	init_player_left_direction(t_game *game);
+
+void	init_player_backward_direction(t_game *game);
+
+void	init_player_forward_direction(t_game *game);
+
 #endif // !INITIALIZERS_H

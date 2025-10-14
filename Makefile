@@ -26,6 +26,10 @@ SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_wall.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_ray.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_px_data.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_backward_direction.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_right_direction.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_left_direction.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_forward_direction.c
 
 SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
 
