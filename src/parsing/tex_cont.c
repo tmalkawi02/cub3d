@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:20:52 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 13:23:07 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 18:09:32 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	free_assign_textures(char *line, char *id)
 
 int	check_textures(t_game *game)
 {
-	if (game->texs->north == 0 || game->texs->south == 0)
+	if (game->texs->north->tex_path == 0 || game->texs->south->tex_path == 0)
 		return (-1);
-	if (game->texs->west == 0 || game->texs->east == 0)
+	if (game->texs->west->tex_path == 0 || game->texs->east->tex_path == 0)
 		return (-1);
 	if (game->floor == 0 || game->ceiling == 0)
 		return (-1);

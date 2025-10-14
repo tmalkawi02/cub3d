@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 15:30:50 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 18:36:24 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	parsing_err(char *s, t_game *game, int fd)
 	while (*s)
 		write(2, s++, 1);
 	clean_game(game);
-	close(fd);
+	get_next_line(-1);
+	if (fd)
+		close(fd);
 	return (-1);
 }
 
@@ -55,7 +57,7 @@ int	wordcmp(char *s1, char *s2)
 	i = 0;
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		{
-			if (!is_whitespace(s1[i]))
+			if (is_whitespace(s1[i]))
 				break;
 			else
 				i++;

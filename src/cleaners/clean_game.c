@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:02:15 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/08 15:02:15 by tmalkawi         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:15:09 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	clean_game(t_game *game)
 		free(game->mlx);
 		game->mlx = NULL;
 	}
-	exit(EXIT_FAILURE);
+	//exit(EXIT_FAILURE);
 }
 
 static void	clean_textures(t_game *game)
@@ -44,22 +44,26 @@ static void	clean_textures(t_game *game)
 		return ;
 	if (game->texs->north)
 	{
-		mlx_destroy_image(game->mlx, game->texs->north->img);
+		if (game->texs->north->img)
+			mlx_destroy_image(game->mlx, game->texs->north->img);
 		free(game->texs->north);
 	}
 	if (game->texs->south)
 	{
-		mlx_destroy_image(game->mlx, game->texs->south->img);
+		if (game->texs->south->img)
+			mlx_destroy_image(game->mlx, game->texs->south->img);
 		free(game->texs->south);
 	}
 	if (game->texs->east)
 	{
-		mlx_destroy_image(game->mlx, game->texs->east->img);
+		if (game->texs->east->img)
+			mlx_destroy_image(game->mlx, game->texs->east->img);
 		free(game->texs->east);
 	}
 	if (game->texs->west)
 	{
-		mlx_destroy_image(game->mlx, game->texs->west->img);
+		if (game->texs->west->img)
+			mlx_destroy_image(game->mlx, game->texs->west->img);
 		free(game->texs->west);
 	}
 	free(game->texs);

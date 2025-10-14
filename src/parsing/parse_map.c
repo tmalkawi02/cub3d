@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 16:25:36 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/14 17:20:33 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@
 
 int	parse_map(char *mapfile, t_game *game)
 {
-	int			map_fd;
+	int	map_fd;
 
-	if (open_map(&map_fd, mapfile) == -1)
-		return (parsing_err("Error\nCould not open map\n", game, map_fd));
+	map_fd = 0;
 	game->texs = (t_textures *)ft_calloc(1, sizeof(t_textures));
 	if (!game->texs)
 		return (0);
+	if (open_map(&map_fd, mapfile) == -1)
+		return (parsing_err("Error\nCould not open map\n", game, 0));
 	if (!initialise_textures(game->texs))
 		return(parsing_err("Error\nTexture memory allocation failed\n", game, map_fd));
 	if (assign_textures(map_fd, game) == -1)
