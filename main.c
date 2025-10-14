@@ -32,9 +32,9 @@ int	main(int ac, char **av)
 	init_game(&game);
 	mlx_hook(game.win, ON_DESTROY, ButtonPressMask, &destroy_button, &game);
 	mlx_hook(game.win, ON_KEYDOWN, KeyPressMask,
-		&k_release, &game);
-	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
 		&k_press, &game);
+	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
+		&k_release, &game);
 	mlx_loop_hook(game.mlx, &render_loop, &game);
 	mlx_loop(game.mlx);
 	clean_game(&game);
