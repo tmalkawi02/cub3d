@@ -20,7 +20,7 @@
 # define E_PATH		"./assets/three.xpm"
 # define W_PATH		"./assets/four.xpm"
 # ifndef MOVE_SPEED
-#  define MOVE_SPEED 0.05f
+#  define MOVE_SPEED 0.00005f
 # endif
 # ifndef ROT_SPEED
 #  define ROT_SPEED 0.5f
