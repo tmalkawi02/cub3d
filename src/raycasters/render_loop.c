@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "handlers.h"
 #include "raycasters.h"
 #include <stdlib.h>
 
@@ -18,11 +19,11 @@ int	render_loop(t_game *game)
 	int	x;
 
 	x = -1;
+	player_move(game);
 	while (++x < WIN_WIDTH)
 	{
 		set_ray_values(game, x);
 		perform_dda(game);
-		calculate_wall(game);
 		calculate_wall(game);
 	}
 	return (EXIT_SUCCESS);
