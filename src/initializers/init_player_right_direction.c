@@ -12,10 +12,10 @@
 
 #include "initializers.h"
 
-void	init_player_backward_direction(t_game *game)
+void	init_player_right_direction(t_game *game)
 {
 	game->play->dir_x = 1.0f;
 	game->play->dir_y = 0.0f;
-	game->play->plane_x = 0.66f;
-	game->play->plane_y = 0.0f;
+	game->play->plane_x = 0.0f;
+	game->play->plane_y = 0.66f;
 }
