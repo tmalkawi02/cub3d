@@ -23,7 +23,7 @@
 #  define MOVE_SPEED 0.00005f
 # endif
 # ifndef ROT_SPEED
-#  define ROT_SPEED 0.5f
+#  define ROT_SPEED 0.00005f
 # endif
 
 typedef enum e_event {
