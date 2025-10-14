@@ -13,16 +13,20 @@
 #include "initializers.h"
 #include "libft.h"
 #include "raycasters.h"
+#include <stddef.h>
 #include <stdlib.h>
 #include "cleaners.h"
 
 static void	find_player_position(t_game *game);
+static void	set_player_dir(t_game *game, char coord);
+
 void	init_player(t_game *game)
 {
 	game->play = malloc(sizeof(t_player));
 	if (game->play == NULL)
 		return (clean_game(game));
 	ft_bzero(game->play, sizeof(t_player));
+	find_player_position(game);
 }
 
 static void	find_player_position(t_game *game)
@@ -43,7 +47,24 @@ static void	find_player_position(t_game *game)
 			{
 				game->play->pos_x = x + 0.5f;
 				game->play->pos_y = y + 0.5f;
+				set_player_dir(game, game->map[y][x]);
+				found = true;
 			}
 		}
 	}
+}
+
+static void	set_player_dir(t_game *game, char coord)
+{
+	if (coord == 'N')
+		init_player_forward_direction(game);
+	else if (coord == 'S')
+		init_player_backward_direction(game);
+	else if (coord == 'E')
+		init_player_right_direction(game);
+	else if (coord == 'W')
+		init_player_left_direction(game);
+	else
+		return ;
+	return ;
 }
