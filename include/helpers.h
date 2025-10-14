@@ -13,6 +13,11 @@
 #ifndef HELPERS_H
 # define HELPERS_H
 
+# include "raycasters.h"
+# include <stdbool.h>
+
 char	**get_map(void);
+
+bool	is_wall(t_game *game, int x, int y);
 
 #endif
