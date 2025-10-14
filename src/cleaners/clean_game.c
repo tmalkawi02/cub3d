@@ -15,6 +15,7 @@
 #include <stdlib.h>
 
 static void	clean_textures(t_game *game);
+static void	clean_win_image(t_game *game);
 
 void	clean_game(t_game *game)
 {
@@ -27,6 +28,7 @@ void	clean_game(t_game *game)
 		free(game->ray);
 	if (game->wall)
 		free(game->wall);
+	clean_win_image(game);
 	if (game->mlx)
 	{
 		if (game->win)
@@ -67,4 +69,15 @@ static void	clean_textures(t_game *game)
 		free(game->texs->west);
 	}
 	free(game->texs);
+}
+
+static void	clean_win_image(t_game *game)
+{
+	if (game == NULL)
+		return ;
+	if (game->px_data)
+	{
+		mlx_destroy_image(game->mlx, game->px_data->img);
+		free(game->px_data);
+	}
 }

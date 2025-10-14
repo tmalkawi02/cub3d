@@ -32,7 +32,14 @@ SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
 SRC += $(SRC_PATH)/$(HELPERS_PATH)/get_map.c
 
 SRC += $(SRC_PATH)/$(HANDLERS_PATH)/k_press.c \
-	   $(SRC_PATH)/$(HANDLERS_PATH)/k_release.c
+	   $(SRC_PATH)/$(HANDLERS_PATH)/k_release.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_move.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_move_right.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_move_left.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_move_up.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_move_down.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_rotate_left.c \
+	   $(SRC_PATH)/$(HANDLERS_PATH)/player_rotate_right.c
 
 SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/set_ray_values.c \
