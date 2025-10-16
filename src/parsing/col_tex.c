@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 18:46:59 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/16 14:34:08 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	set_texture(t_game *game, char *line, char *id)
 	return (ret);
 }
 
-int	assign_textures(int fd, t_game *game)
+int	assign_textures(int fd, int *lines_read, t_game *game)
 {
 	char	*line;
 	int		i;
@@ -109,6 +109,7 @@ int	assign_textures(int fd, t_game *game)
 	while (1)
 	{
 		line = get_next_line(fd);
+		*lines_read++;
 		i = skip_whitespace(line);
 		if (!line[i])
 		{
