@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/16 15:26:39 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/16 18:13:21 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,29 @@ int	check_walls(char **map)
 
 }
 
-char **fill_rows(char fd, char **map)
+char **fill_rows(char fd, char **map, int rows)
 {
 	int		i;
 	char	*line;
 	int		len;
+	int		pos;
 
-	while (1)
+	pos = 0;
+	while (i < rows)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		while (line[len])
-		{
-			if (!valid(line[len]))
-				return (map_error(line, map));
-			len++;
-		}
-		
+		len = valid_line(line, &pos);
+		if (!len)
+			return (map_error(line, map));
 		map[i] = ft_calloc(len, sizeof(char));
 		if (!map[i])
 			return (map_error(line, map));
-		map[i] = copy(line);
+		map[i] = copy_wout_nl(line, map[i]);
 		i++;
 	}
+	return (map);
 }
 
 int	get_n_rows(int fd, char *mapfile)
@@ -83,7 +82,7 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 		line = get_next_line(fd);
 		free(line);
 	}
-	game->map = fill_rows(fd, game->map);
+	game->map = fill_rows(fd, game->map, rows);
 	if (game->map[0][0] = 0 || check_walls(game->map) == -1)
 		return (err("Error\nInvalid map\n", game, fd));
 	return (0);

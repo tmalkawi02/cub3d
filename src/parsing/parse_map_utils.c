@@ -6,14 +6,47 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:23:54 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/16 15:24:45 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/16 18:20:33 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char **map_error(char *line, char **map)
+char	**map_error(char *line, char **map)
 {
 	free(line);
 	map[0][0] = 0;
 	return (map);
 }
 
+int	valid_line(char *s, int *pos)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '0' || s[i] == '1' || s[i] == ' ' || s[i] == '\n')
+			i++;
+		else if (*pos == 0 && (s[i] == 'N' || s[i] == 'S' || s[i] == 'W' || s[i] == 'E'))
+		{
+			*pos = 1;
+			i++;
+		}
+		else
+			return (0);
+	}
+	return (i);
+}
+
+char	*copy_wout_nl(char *src, char *dest)
+{
+	int		i;
+
+	while (src[i] && src[i] != '\n')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	free(src);
+	return (dest);
+}

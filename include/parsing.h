@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:12:41 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/16 14:33:39 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/16 18:20:28 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ char	*next_word(char *s);
 void	free_assign_textures(char *line, char *id);
 int		check_textures(t_game *game);
 void	clean_game(t_game *game);
+char	**map_error(char *line, char **map);
+int		valid_line(char *s, int *pos);
+char	*copy_wout_nl(char *src, char *dest);
 
 #endif
