@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 17:27:24 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:48:01 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,23 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 	char	*line;
 	t_wall	*wall;
 
-	wall = NULL;
+	wall = (t_wall *)ft_calloc(1, sizeof(t_wall));
+	if (!wall)
+		return (-1);
 	get_n_rows(fd, wall);
 	game->map = (char **)ft_calloc(wall->n_rows + 1, sizeof(char *));
 	if (!game->map)
 		return (-1);
 	i = 0;
 	open_map(&fd, mapfile);
-	while (i++ < lines_read)
+	while (i++ < lines_read - 1)
 	{
 		line = get_next_line(fd);
 		free(line);
 	}
 	game->map = fill_rows(fd, game->map, wall->n_rows, wall->n_cols);
-	if (game->map[0][0] == 0 || !check_walls(game->map, wall))
-		return (parsing_err("Error\nInvalid map\n", game, fd));
+	if (game->map[0] == 0 || !check_walls(game->map, wall))
+		return (-1);
 	return (0);
 }
 

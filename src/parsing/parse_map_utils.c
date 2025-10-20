@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:23:54 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 17:29:47 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:47:00 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 char	**map_error(char *line, char **map)
 {
 	free(line);
-	map[0][0] = 0;
+	if (map[0])
+		map[0][0] = 0;
 	return (map);
 }
 
