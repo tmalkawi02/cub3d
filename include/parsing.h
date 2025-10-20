@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:12:41 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/16 18:20:28 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 16:17:19 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 
 # include <unistd.h>
 # include <fcntl.h>
+
+typedef	struct s_wall
+{
+	char	**map;
+	int		row;
+	int		col;
+	int		n_rows;
+	int		n_cols;
+	int		error;
+	int		start;
+}	t_wall;
 
 int		parse_map(char *mapfile, t_game *game);
 int		open_map(int *map_fd, char *mapfile);
@@ -31,6 +42,6 @@ int		check_textures(t_game *game);
 void	clean_game(t_game *game);
 char	**map_error(char *line, char **map);
 int		valid_line(char *s, int *pos);
-char	*copy_wout_nl(char *src, char *dest);
+char	*copy_wout_nl(char *src, char *dest, int len);
 
 #endif

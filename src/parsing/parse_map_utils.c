@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:23:54 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/16 18:20:33 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 16:17:13 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ int	valid_line(char *s, int *pos)
 		else
 			return (0);
 	}
+	if (s[0] != '1' || s[i - 1] != '1')
+		return (0);
 	return (i);
 }
 
-char	*copy_wout_nl(char *src, char *dest)
+char	*copy_wout_nl(char *src, char *dest, int len)
 {
 	int		i;
 
@@ -46,7 +48,9 @@ char	*copy_wout_nl(char *src, char *dest)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
+	dest[len] = 0;
+	while (i < len)
+		dest[i++] = ' ';
 	free(src);
 	return (dest);
 }

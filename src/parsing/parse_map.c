@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/16 18:13:21 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 16:16:24 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,7 @@
 #include "libft.h"
 #include "parsing.h"
 
-/**
- * @brief checks that the map is surrounded by walls
- * 
- * @param fd: map file
- * @return int: 0 if no walls, 1 if valid walls
- */
-int	check_walls(char **map)
-{
-
-}
-
-char **fill_rows(char fd, char **map, int rows)
+char **fill_rows(char fd, char **map, int rows, int cols)
 {
 	int		i;
 	char	*line;
@@ -41,38 +30,47 @@ char **fill_rows(char fd, char **map, int rows)
 		len = valid_line(line, &pos);
 		if (!len)
 			return (map_error(line, map));
-		map[i] = ft_calloc(len, sizeof(char));
+		map[i] = ft_calloc(cols, sizeof(char));
 		if (!map[i])
 			return (map_error(line, map));
-		map[i] = copy_wout_nl(line, map[i]);
+		map[i] = copy_wout_nl(line, map[i], cols);
 		i++;
 	}
 	return (map);
 }
 
-int	get_n_rows(int fd, char *mapfile)
+void	get_n_rows(int fd, char *mapfile, t_wall *wall)
 {
 	int		rows;
-	char	c;
-	
+	char	*line;
+	int		cols;
+	int		temp_cols;
+
 	rows = 0;
-	while (read(fd, &c, 1) > 0)
+	cols = 0;
+	while (1)
     {
-        if (c == '\n')
-            rows++;
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		rows++;
+		temp_cols = ft_strlen(line);
+		if (temp_cols > cols)
+			cols = temp_cols;
     }
     close(fd);
-	return (rows);
+	wall->n_rows = rows;
+	wall->n_cols = cols;
 }
 
 int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 {
-	int		rows;
 	int		i;
 	char	*line;
+	t_wall	*wall;
 
-	rows = get_n_rows(fd, mapfile);
-	game->map = (char **)ft_calloc(rows + 1, sizeof(char *));
+	get_n_rows(fd, mapfile, wall);
+	game->map = (char **)ft_calloc(wall->n_rows + 1, sizeof(char *));
 	if (!game->map)
 		return (-1);
 	i = 0;
@@ -82,8 +80,8 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 		line = get_next_line(fd);
 		free(line);
 	}
-	game->map = fill_rows(fd, game->map, rows);
-	if (game->map[0][0] = 0 || check_walls(game->map) == -1)
+	game->map = fill_rows(fd, game->map, wall->n_rows, wall->n_cols);
+	if (game->map[0][0] = 0 || !check_walls(game->map, wall))
 		return (err("Error\nInvalid map\n", game, fd));
 	return (0);
 }
