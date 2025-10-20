@@ -155,6 +155,9 @@ void			set_ray_values(t_game *game, int x);
 
 void			perform_dda(t_game *game);
 
+void			draw_textured_walls(t_game *game, t_wall *wall,
+					t_texture *tex, int x);
+
 void			calculate_wall(t_game *game);
 
 #endif
