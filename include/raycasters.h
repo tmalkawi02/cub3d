@@ -146,6 +146,9 @@ unsigned int	render_pixel_texture(unsigned int x,
 
 t_texture		*select_wall_texture(t_game *game, t_ray *ray);
 
+void			calculate_texture_coord(t_game *game, t_ray *ray,
+					t_wall *wall, t_texture *tex);
+
 int				render_loop(t_game *game);
 
 void			set_ray_values(t_game *game, int x);
