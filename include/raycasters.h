@@ -13,17 +13,19 @@
 #ifndef RAYCASTERS_H
 # define RAYCASTERS_H
 
-# define WIN_HEIGHT 1280.0f
-# define WIN_WIDTH	720.0f
+# define WIN_WIDTH	1280.0f
+# define WIN_HEIGHT	720.0f
 # define N_PATH		"./assets/one.xpm"
 # define S_PATH		"./assets/two.xpm"
 # define E_PATH		"./assets/three.xpm"
 # define W_PATH		"./assets/four.xpm"
+# define CEILING_COL	0x87CEEB
+# define FLOOR_COL		0x6b5428	
 # ifndef MOVE_SPEED
-#  define MOVE_SPEED 0.00005f
+#  define MOVE_SPEED 0.005f
 # endif
 # ifndef ROT_SPEED
-#  define ROT_SPEED 0.00005f
+#  define ROT_SPEED 0.005f
 # endif
 
 typedef enum e_event {
