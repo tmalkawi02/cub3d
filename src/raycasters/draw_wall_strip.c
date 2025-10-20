@@ -11,12 +11,20 @@
 /* ************************************************************************** */
 
 #include "raycasters.h"
+#include <stdio.h>
 
 void	draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x)
 {
 	t_texture	*tex;
+	int			y;
 
 	tex = select_wall_texture(game, ray);
-	calculate_texture_coord(game, ray, wall, tex);
+	calculate_texture_coord(ray, wall, tex);
+	y = -1;
+	while (++y < wall->draw_start)
+		render_pixel(game, x, y, CEILING_COL);
 	draw_textured_walls(game, wall, tex, x);
+	y = wall->draw_end - 1;
+	while (++y < WIN_HEIGHT)
+		render_pixel(game, x, y, FLOOR_COL);
 }

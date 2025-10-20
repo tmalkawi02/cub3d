@@ -16,6 +16,8 @@ void	render_pixel(t_game *game, unsigned int x, unsigned int y, int color)
 {
 	char	*dst;
 
+	if (x < 0 || y < 0 || x >= WIN_WIDTH || y >= WIN_HEIGHT)
+		return ;
 	dst = game->px_data->addr + (y * game->px_data->len_line + x
 			* (game->px_data->bpp / 8));
 	*(unsigned int *)dst = color;

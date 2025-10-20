@@ -60,12 +60,12 @@ typedef struct s_player
 	int		kleft;
 	int		rrotate;
 	int		lrotate;
-	float	pos_x;
-	float	pos_y;
-	float	dir_x;
-	float	dir_y;
-	float	plane_x;
-	float	plane_y;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_px_data
@@ -79,16 +79,16 @@ typedef struct s_px_data
 
 typedef struct s_ray
 {
-	float	camera_x;
-	float	dir_x;
-	float	dir_y;
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
 	int		map_x;
 	int		map_y;
-	float	side_dist_x;
-	float	side_dist_y;
-	float	delta_dist_x;
-	float	delta_dist_y;
-	float	perp_wall_dist;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
 	int		step_x;
 	int		step_y;
 	int		hit;
@@ -100,10 +100,10 @@ typedef struct s_wall
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	float	wall_x;
+	double	wall_x;
 	int		tex_x;
-	float	step;
-	float	tex_pos;
+	double	step;
+	double	tex_pos;
 }	t_wall;
 
 typedef struct s_texture
@@ -126,8 +126,8 @@ typedef struct s_ray_textures {
 
 typedef struct s_camera
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_camera;
 
 typedef struct s_game
@@ -148,7 +148,7 @@ unsigned int	render_pixel_texture(unsigned int x,
 
 t_texture		*select_wall_texture(t_game *game, t_ray *ray);
 
-void			calculate_texture_coord(t_game *game, t_ray *ray,
+void			calculate_texture_coord(t_ray *ray,
 					t_wall *wall, t_texture *tex);
 
 int				render_loop(t_game *game);

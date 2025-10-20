@@ -22,7 +22,7 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return (clean_game(game));
-	game->win = mlx_new_window(game->mlx, WIN_HEIGHT, WIN_WIDTH, "cub3d");
+	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	game->map = get_map();
 	init_px_data(game);
 	init_cam(game);

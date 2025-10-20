@@ -16,11 +16,11 @@
 void	calculate_wall(t_game *game)
 {
 	game->wall->line_height = (int)(WIN_HEIGHT / game->ray->perp_wall_dist);
-	game->wall->draw_start = (float)-game->wall->line_height
+	game->wall->draw_start = (double)-game->wall->line_height
 		/ 2 + WIN_HEIGHT / 2;
 	if (game->wall->draw_start < 0)
 		game->wall->draw_start = 0;
-	game->wall->draw_end = (float)game->wall->line_height / 2 + WIN_HEIGHT / 2;
+	game->wall->draw_end = (double)game->wall->line_height / 2 + WIN_HEIGHT / 2;
 	if (game->wall->draw_end >= WIN_HEIGHT)
 		game->wall->draw_end = WIN_HEIGHT - 1;
 	if (game->ray->side == 0)
