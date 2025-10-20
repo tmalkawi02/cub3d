@@ -158,6 +158,9 @@ void			perform_dda(t_game *game);
 void			draw_textured_walls(t_game *game, t_wall *wall,
 					t_texture *tex, int x);
 
+void			render_pixel(t_game *game, unsigned int x,
+					unsigned int y, int color);
+
 void			calculate_wall(t_game *game);
 
 #endif
