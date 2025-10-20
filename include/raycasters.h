@@ -163,4 +163,6 @@ void			render_pixel(t_game *game, unsigned int x,
 
 void			calculate_wall(t_game *game);
 
+void			draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x);
+
 #endif
