@@ -141,12 +141,15 @@ typedef struct s_game
 	t_px_data	*px_data;
 }	t_game;
 
-int		render_loop(t_game *game);
+unsigned int	render_pixel_texture(unsigned int x,
+					unsigned int y, t_texture *tex);
 
-void	set_ray_values(t_game *game, int x);
+int				render_loop(t_game *game);
 
-void	perform_dda(t_game *game);
+void			set_ray_values(t_game *game, int x);
 
-void	calculate_wall(t_game *game);
+void			perform_dda(t_game *game);
+
+void			calculate_wall(t_game *game);
 
 #endif

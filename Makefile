@@ -50,7 +50,8 @@ SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/set_ray_values.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/perform_dda.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/calculate_wall.c \
-	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_pixel.c
+	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_pixel.c \
+	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_pixel_texture.c
 
 LIB_PATH=lib
 COMPILER=clang
