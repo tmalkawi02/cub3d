@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:02:07 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 16:29:25 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:32:56 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 void outline_east(t_wall *w)
 {
+	if (w->col == w->start && w->row == 0)
+		return ;
 	if (w->row > 0)
 	{
 		while (w->map[w->row - 1][w->col] == ' ')
@@ -42,6 +44,8 @@ void outline_east(t_wall *w)
 
 void outline_west(t_wall *w)
 {
+	if (w->col == w->start && w->row == 0)
+		return ;
 	if (w->row < w->n_rows - 1)
 	{
 		while (w->map[w->row + 1][w->col] == ' ')
@@ -68,6 +72,8 @@ void outline_west(t_wall *w)
 
 void outline_north(t_wall *w)
 {
+	if (w->col == w->start && w->row == 0)
+		return ;
 	if (w->col > 0)
 	{
 		while (w->map[w->row][w->col - 1] == ' ')
@@ -94,6 +100,8 @@ void outline_north(t_wall *w)
 
 void outline_south(t_wall *w)
 {
+	if (w->col == w->start && w->row == 0)
+		return ;
 	if (w->col < w->n_cols - 1)
 	{
 		while (w->map[w->row][w->col + 1] == ' ')
@@ -125,8 +133,6 @@ void outline_south(t_wall *w)
  */
 int	check_walls(char **map, t_wall *wall)
 {
-	int	start;
-
 	wall->map = map;
 	wall->row = 0;
 	wall->col = skip_whitespace(map[0]);
@@ -134,7 +140,7 @@ int	check_walls(char **map, t_wall *wall)
 	if (map[wall->row][wall->col] != '1')
 		return (0);
 	wall->error = 0;
-	outline_east(&wall);
+	outline_east(wall);
 	if (wall->error)
 		return (0);
 	else

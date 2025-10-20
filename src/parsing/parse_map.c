@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 16:16:24 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:27:24 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char **fill_rows(char fd, char **map, int rows, int cols)
 	int		pos;
 
 	pos = 0;
+	i = 0;
 	while (i < rows)
 	{
 		line = get_next_line(fd);
@@ -39,7 +40,7 @@ char **fill_rows(char fd, char **map, int rows, int cols)
 	return (map);
 }
 
-void	get_n_rows(int fd, char *mapfile, t_wall *wall)
+void	get_n_rows(int fd, t_wall *wall)
 {
 	int		rows;
 	char	*line;
@@ -69,7 +70,8 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 	char	*line;
 	t_wall	*wall;
 
-	get_n_rows(fd, mapfile, wall);
+	wall = NULL;
+	get_n_rows(fd, wall);
 	game->map = (char **)ft_calloc(wall->n_rows + 1, sizeof(char *));
 	if (!game->map)
 		return (-1);
@@ -81,8 +83,8 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 		free(line);
 	}
 	game->map = fill_rows(fd, game->map, wall->n_rows, wall->n_cols);
-	if (game->map[0][0] = 0 || !check_walls(game->map, wall))
-		return (err("Error\nInvalid map\n", game, fd));
+	if (game->map[0][0] == 0 || !check_walls(game->map, wall))
+		return (parsing_err("Error\nInvalid map\n", game, fd));
 	return (0);
 }
 
@@ -105,7 +107,7 @@ int	parse_map(char *mapfile, t_game *game)
 	if (check_textures(game) == -1)
 		return (parsing_err("Error\nNot all textures assigned\n", game, map_fd));
 	if (build_map(map_fd, lines_read, mapfile, game) == -1)
-		return (err("Error\nCould not build map\n", game));
+		return (parsing_err("Error\nCould not build map\n", game, map_fd));
 	close(map_fd);
 	get_next_line(-1);
 	return (0);

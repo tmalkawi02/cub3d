@@ -6,9 +6,12 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:23:54 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 16:17:13 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:29:47 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "raycasters.h"
+#include "parsing.h"
 
 char	**map_error(char *line, char **map)
 {
@@ -43,6 +46,7 @@ char	*copy_wout_nl(char *src, char *dest, int len)
 {
 	int		i;
 
+	i = 0;
 	while (src[i] && src[i] != '\n')
 	{
 		dest[i] = src[i];

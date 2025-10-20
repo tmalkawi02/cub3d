@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:12:41 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 16:17:19 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 17:30:54 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdlib.h>
 
 typedef	struct s_wall
 {
@@ -43,5 +44,10 @@ void	clean_game(t_game *game);
 char	**map_error(char *line, char **map);
 int		valid_line(char *s, int *pos);
 char	*copy_wout_nl(char *src, char *dest, int len);
+int		check_walls(char **map, t_wall *wall);
+void outline_north(t_wall *w);
+void outline_south(t_wall *w);
+void outline_east(t_wall *w);
+void outline_west(t_wall *w);
 
 #endif
