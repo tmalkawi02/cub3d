@@ -144,6 +144,8 @@ typedef struct s_game
 unsigned int	render_pixel_texture(unsigned int x,
 					unsigned int y, t_texture *tex);
 
+t_texture		*select_wall_texture(t_game *game, t_ray *ray);
+
 int				render_loop(t_game *game);
 
 void			set_ray_values(t_game *game, int x);
