@@ -21,7 +21,9 @@ void	draw_textured_walls(t_game *game, t_wall *wall, t_texture *tex, int x)
 	y = wall->draw_start;
 	while (y <= wall->draw_end)
 	{
-		tex_y = (int)wall->tex_pos & (tex->height - 1);
+		tex_y = (int)wall->tex_pos % tex->height;
+		if (tex_y < 0)
+			tex_y += tex->height;
 		wall->tex_pos += wall->step;
 		color = render_pixel_texture(wall->tex_x, tex_y, tex);
 		render_pixel(game, x, y, color);

@@ -22,6 +22,10 @@
 static void	clear_screen(t_game *game);
 static void	render_minimap_simple(t_game *game);
 
+#if DEBUG == 1
+static int fps_count = 0;
+#endif
+
 void    draw_direction_ray(t_game *game, int scale)
 {
     int     player_x;
@@ -117,6 +121,17 @@ void    draw_direction_ray(t_game *game, int scale)
 int	render_loop(t_game *game)
 {
 	int	x;
+
+#if DEBUG == 1
+	if (fps_count % 60 == 0)
+	{
+		printf("=== FRAME ===\n");
+		printf("PLayer pos: (%.2f, %.2f)\n", game->play->pos_x, game->play->pos_y);
+		printf("PLayer dir: (%.2f, %.2f)\n", game->play->dir_x, game->play->dir_y);
+		printf("PLayer plane: (%.2f, %.2f)\n", game->play->plane_x, game->play->plane_y);
+	}
+	fps_count++;
+#endif
 
 	x = -1;
 	clear_screen(game);

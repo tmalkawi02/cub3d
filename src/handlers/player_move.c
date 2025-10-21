@@ -16,15 +16,15 @@ void	player_move(t_game *game)
 {
 	if (game->play->kright)
 		player_move_right(game);
-	if (game->play->kleft)
+	else if (game->play->kleft)
 		player_move_left(game);
-	if (game->play->kup)
+	else if (game->play->kup)
 		player_move_up(game);
-	if (game->play->kdown)
+	else if (game->play->kdown)
 		player_move_down(game);
 	if (game->play->rrotate)
 		player_rotate_right(game);
-	if (game->play->lrotate)
+	else if (game->play->lrotate)
 		player_rotate_left(game);
 	return ;
 }
