@@ -16,9 +16,9 @@
 
 void	player_rotate_left(t_game *game)
 {
-	float	old_dir_x;
-	float	old_plane_x;
-	float	angle;
+	double	old_dir_x;
+	double	old_plane_x;
+	double	angle;
 
 	old_dir_x = game->play->dir_x;
 	old_plane_x = game->play->dir_y;

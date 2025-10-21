@@ -27,6 +27,9 @@
 # ifndef ROT_SPEED
 #  define ROT_SPEED 0.005f
 # endif
+# ifndef DEBUG
+#  define DEBUG 1
+# endif
 
 typedef enum e_event {
 	ON_KEYDOWN = 2,

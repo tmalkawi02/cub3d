@@ -24,7 +24,10 @@ void	draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x)
 	while (++y < wall->draw_start)
 		render_pixel(game, x, y, CEILING_COL);
 	draw_textured_walls(game, wall, tex, x);
-	y = wall->draw_end - 1;
-	while (++y < WIN_HEIGHT)
+	y = wall->draw_end + 1;
+	while (y < WIN_HEIGHT)
+	{
 		render_pixel(game, x, y, FLOOR_COL);
+		y++;
+	}
 }
