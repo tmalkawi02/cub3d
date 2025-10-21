@@ -22,10 +22,10 @@
 # define CEILING_COL	0x87CEEB
 # define FLOOR_COL		0x6b5428	
 # ifndef MOVE_SPEED
-#  define MOVE_SPEED 0.05f
+#  define MOVE_SPEED 0.0300
 # endif
 # ifndef ROT_SPEED
-#  define ROT_SPEED 0.05f
+#  define ROT_SPEED 0.0099
 # endif
 # ifndef DEBUG
 #  define DEBUG 1
