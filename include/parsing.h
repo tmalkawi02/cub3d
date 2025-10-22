@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:12:41 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/22 18:56:11 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/22 19:48:27 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-
-typedef	struct s_wall
-{
-	char	**map;
-	int		row;
-	int		col;
-	int		n_rows;
-	int		n_cols;
-	int		error;
-	int		start;
-}	t_wall;
 
 int		parse_map(char *mapfile, t_game *game);
 int		open_map(int *map_fd, char *mapfile);
@@ -44,9 +33,9 @@ void	clean_game(t_game *game);
 char	**map_error(char *line, char **map);
 int		valid_line(char *s, int *pos);
 char	*copy_wout_nl(char *src, char *dest, int len);
-int		check_walls(char **map, t_wall *wall);
-int		check_col(char **map, int row, int col, t_wall *wall);
-int		skip_whitespace_col(char **map, int col, t_wall *wall);
+int		check_walls(char **map, t_game *game);
+int		check_col(char **map, int row, int col, t_game *game);
+int		skip_whitespace_col(char **map, int col, t_game *game);
 int		is_cardinal(char c);
 
 #endif

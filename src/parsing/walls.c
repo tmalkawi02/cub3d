@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:00:08 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/22 18:56:04 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/22 19:30:03 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	check_row(char **map, int row, int col)
 	return (1);
 }
 
-int	check_walls(char **map, t_wall *wall)
+int	check_walls(char **map, t_game *game)
 {
 	int	ret;
 	int	row;
@@ -77,7 +77,7 @@ int	check_walls(char **map, t_wall *wall)
 
 	ret = 0;
 	row = 0;
-	while (row < wall->n_rows)
+	while (row < game->n_rows)
 	{
 		i = skip_whitespace(map[row]);
 		if (check_row(map, row, i) == 0)
@@ -85,10 +85,10 @@ int	check_walls(char **map, t_wall *wall)
 		row++;
 	}
 	col = 0;
-	while (col < wall->n_cols)
+	while (col < game->n_cols)
 	{
-		i = skip_whitespace_col(map, col, wall);
-		if (check_col(map, i, col, wall) == 0)
+		i = skip_whitespace_col(map, col, game);
+		if (check_col(map, i, col, game) == 0)
 			return (0);
 		col++;
 	}	

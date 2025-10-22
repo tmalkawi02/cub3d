@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 19:00:28 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/22 19:29:05 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char **fill_rows(char fd, char **map, int rows, int cols)
 	return (map);
 }
 
-void	get_n_rows(int fd, t_wall *wall)
+void	get_n_rows(int fd, t_game *game)
 {
 	int		rows;
 	char	*line;
@@ -60,21 +60,17 @@ void	get_n_rows(int fd, t_wall *wall)
 			cols = temp_cols;
     }
     close(fd);
-	wall->n_rows = rows;
-	wall->n_cols = cols;
+	game->n_rows = rows;
+	game->n_cols = cols;
 }
 
 int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 {
 	int		i;
 	char	*line;
-	t_wall	*wall;
 
-	wall = (t_wall *)ft_calloc(1, sizeof(t_wall));
-	if (!wall)
-		return (-1);
-	get_n_rows(fd, wall);
-	game->map = (char **)ft_calloc(wall->n_rows + 1, sizeof(char *));
+	get_n_rows(fd, game);
+	game->map = (char **)ft_calloc(game->n_rows + 1, sizeof(char *));
 	if (!game->map)
 		return (-1);
 	i = 0;
@@ -84,8 +80,8 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 		line = get_next_line(fd);
 		free(line);
 	}
-	game->map = fill_rows(fd, game->map, wall->n_rows, wall->n_cols);
-	if (game->map[0] == 0 || !check_walls(game->map, wall))
+	game->map = fill_rows(fd, game->map, game->n_rows, game->n_cols);
+	if (game->map[0] == 0 || !check_walls(game->map, game))
 		return (-1);
 	return (0);
 }
