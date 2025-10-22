@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   walls.c                                            :+:      :+:    :+:   */
+/*   walls_cont.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 16:00:08 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/22 17:39:50 by aborel           ###   ########.fr       */
+/*   Created: 2025/10/22 17:28:11 by aborel            #+#    #+#             */
+/*   Updated: 2025/10/22 17:38:22 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,45 @@
 #include "parsing.h"
 #include "libft.h"
 
-int	check_room(char **map, int row, int col)
+int	check_room_col(char **map, int row, int col)
 {
 	if (map[row][col] != '1')
 		return (0);
 	while (map[row][col] == '1')
-		col++;
+		row++;
 	if (map[row][col] != '0')
 		return (0);
 	while (map[row][col] == '0')
-		col++;
+		row++;
 	if (map[row][col] = 0)
 		return (col);
 	if (map[row][col] != '1')
 		return (0);
 	while (map[row][col] == '1')
-		col++;
-	return (col - 1);
+		row++;
+	return (row - 1);
 }
 
-int	check_gap(char **map, int row, int col)
+int	check_gap_col(char **map, int row, int col)
 {
 	if (map[row][col] != '1')
 		return (0);
 	while (map[row][col] == '1')
-		col++;
+		row++;
 	if (map[row][col] != ' ')
 		return (0);
 	while (map[row][col] == ' ')
-		col++;
+		row++;
 	if (map[row][col] = 0)
 		return (col);
 	if (map[row][col] != '1')
 		return (0);
 	while (map[row][col] == '1')
-		col++;
-	return (col - 1);
+		row++;
+	return (row - 1);
 }
 
-int	check_row(char **map, int row, int col)
+int	check_col(char **map, int row, int col)
 {
 	int	room;
 	int	gap;
@@ -65,34 +65,17 @@ int	check_row(char **map, int row, int col)
 		gap = check_gap(map, row, col);
 		if (gap == 0 && room == 0)
 			return (0);
-		col += room + gap;
+		row += room + gap;
 	}
 	return (1);
 }
 
-int	check_map(char **map, t_wall *wall)
+int	skip_whitespace_col(char **map)
 {
-	int	ret;
-	int	row;
 	int	col;
-	int	i;
 
-	ret = 0;
-	row = 0;
-	while (row < wall->n_rows)
-	{
-		i = skip_whitespace(map[row]);
-		if (check_row(map, row, i) == 0)
-			return (0);
-		row++;
-	}
 	col = 0;
-	while (col < wall->n_cols)
-	{
-		i = skip_whitespace_col(map[0][col]);
-		if (check_col(map, i, col) == 0)
-			return (0);
+	while (map[0][col] == ' ')
 		col++;
-	}	
-	return (1);
+	return (col);
 }

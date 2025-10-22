@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/20 17:48:01 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/20 19:00:28 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	get_n_rows(int fd, t_wall *wall)
 	int		cols;
 	int		temp_cols;
 
-	rows = 0;
+	rows = 1;
 	cols = 0;
 	while (1)
     {
