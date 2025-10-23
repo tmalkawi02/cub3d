@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:43:18 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/23 16:43:18 by tmalkawi         ###   ########.fr       */
+/*   Updated: 2025/10/23 21:17:40 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "handlers.h"
+#include "libft.h"
 #include "raycasters_bonus.h"
 #include "mlx.h"
 #include "initializers.h"
@@ -28,20 +29,22 @@ static int	destroy_button(t_game *game);
 
 int	main(int ac, char **av)
 {
-	t_game	game;
+	t_game	*game;
 
-	(void) av;
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
-	init_game(&game, av[1]);
-	mlx_hook(game.win, ON_DESTROY, ButtonPressMask, &destroy_button, &game);
-	mlx_hook(game.win, ON_KEYDOWN, KeyPressMask,
-		&k_press, &game);
-	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
-		&k_release, &game);
-	mlx_loop_hook(game.mlx, &render_loop_bonus, &game);
-	mlx_loop(game.mlx);
-	clean_game(&game);
+	game = (t_game *)ft_calloc(1, sizeof(t_game));
+	if (!game)
+		return (EXIT_FAILURE);
+	init_game(game, av[1]);
+	mlx_hook(game->win, ON_DESTROY, ButtonPressMask, &destroy_button, game);
+	mlx_hook(game->win, ON_KEYDOWN, KeyPressMask,
+		&k_press, game);
+	mlx_hook(game->win, ON_KEYUP, KeyReleaseMask,
+		&k_release, game);
+	mlx_loop_hook(game->mlx, &render_loop_bonus, game);
+	mlx_loop(game->mlx);
+	clean_game(game);
 	return (EXIT_SUCCESS);
 }
 

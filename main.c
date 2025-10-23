@@ -35,6 +35,8 @@ int	main(int ac, char **av)
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
+	if (!game)
+		return (EXIT_FAILURE);
 	init_game(game, av[1]);
 	ft_print_array((void **) game->map);
 	mlx_hook(game->win, ON_DESTROY, ButtonPressMask, &destroy_button, game);
