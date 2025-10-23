@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "cleaners.h"
+#include "parsing.h"
 
 static void	find_player_position(t_game *game);
 static void	set_player_dir(t_game *game, char coord);
@@ -24,7 +25,7 @@ void	init_player(t_game *game)
 {
 	game->play = malloc(sizeof(t_player));
 	if (game->play == NULL)
-		return (clean_game(game));
+		return (parsing_err("Error\nUnable to init player", game, 0));
 	ft_bzero(game->play, sizeof(t_player));
 	find_player_position(game);
 }

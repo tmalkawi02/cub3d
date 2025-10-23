@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include "raycasters.h"
 
-int		parse_map(char *mapfile, t_game *game);
+void	parse_map(char *mapfile, t_game *game);
 int		open_map(int *map_fd, char *mapfile);
 int		initialise_textures(t_textures *tex);
 void	parsing_err(char *s, t_game *game, int fd);

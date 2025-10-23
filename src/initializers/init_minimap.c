@@ -14,12 +14,13 @@
 #include "libft.h"
 #include "raycasters.h"
 #include <stdlib.h>
+#include "parsing.h"
 
 void	init_minimap(t_game *game)
 {
 	game->minimap = malloc(sizeof(t_minimap));
 	if (game->minimap == NULL)
-		return ;
+		return (parsing_err("Error\nUnable to init minimap", game, 0));
 	ft_bzero(game->minimap, sizeof(t_minimap));
 	game->minimap->fg_color = 0xFFFFFF;
 	game->minimap->bg_color = 0x7393B3;

@@ -14,6 +14,7 @@
 #include "raycasters.h"
 #include <stdlib.h>
 #include "cleaners.h"
+#include "parsing.h"
 
 void	init_ray(t_game *game)
 {
@@ -21,6 +22,6 @@ void	init_ray(t_game *game)
 		return ;
 	game->ray = malloc(sizeof(t_ray));
 	if (game->ray == NULL)
-		return (clean_game(game));
+		return (parsing_err("Error\nUnable to init rays", game, 0));
 	ft_bzero(game->ray, sizeof(t_ray));
 }

@@ -13,6 +13,7 @@
 #include "raycasters.h"
 #include "libft.h"
 #include "parsing.h"
+#include "initializers.h"
 
 char **fill_rows(char fd, char **map, int rows, int cols)
 {
@@ -37,6 +38,7 @@ char **fill_rows(char fd, char **map, int rows, int cols)
 		map[i] = copy_wout_nl(line, map[i], cols);
 		i++;
 	}
+	map[i] = NULL;
 	return (map);
 }
 
@@ -86,20 +88,15 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 	return (0);
 }
 
-int	parse_map(char *mapfile, t_game *game)
+void	parse_map(char *mapfile, t_game *game)
 {
 	int	map_fd;
 	int	lines_read;
 
 	map_fd = 0;
 	lines_read = 0;
-	game->texs = (t_textures *)ft_calloc(1, sizeof(t_textures));
-	if (!game->texs)
-		return (0);
 	if (open_map(&map_fd, mapfile) == -1)
 		return (parsing_err("Error\nCould not open map\n", game, 0));
-	if (!initialise_textures(game->texs))
-		return(parsing_err("Error\nTexture memory allocation failed\n", game, map_fd));
 	if (assign_textures(map_fd, &lines_read, game) == -1)
 		return (parsing_err("Error\nCould not assign textures\n", game, map_fd));
 	if (check_textures(game) == -1)
@@ -107,6 +104,4 @@ int	parse_map(char *mapfile, t_game *game)
 	if (build_map(map_fd, lines_read, mapfile, game) == -1)
 		return (parsing_err("Error\nCould not build map\n", game, map_fd));
 	close(map_fd);
-	get_next_line(-1);
-	return (0);
 }

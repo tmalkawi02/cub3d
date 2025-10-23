@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cleaners.h"
+#include "parsing.h"
 #include "raycasters.h"
 #include <stdlib.h>
 #include "libft.h"
@@ -19,6 +20,6 @@ void	init_cam(t_game *game)
 {
 	game->cam = malloc(sizeof(t_camera));
 	if (game->cam == NULL)
-		return (clean_game(game));
+		return (parsing_err("Error\nUnable to init camera", game, 0));
 	ft_bzero(game->cam, sizeof(t_camera));
 }

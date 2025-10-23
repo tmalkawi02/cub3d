@@ -15,9 +15,7 @@
 #include "raycasters.h"
 #include <stdlib.h>
 #include "cleaners.h"
-
-static void	set_address_of_textures(t_game *game);
-static int	load_texture(t_game *game, t_texture *tex, char *path);
+#include "parsing.h"
 
 void	init_textures(t_game *game)
 {
@@ -41,30 +39,4 @@ void	init_textures(t_game *game)
 	if (game->texs->west == NULL)
 		return ;
 	ft_bzero(game->texs->west, sizeof(t_texture));
-	set_address_of_textures(game);
-}
-
-static void	set_address_of_textures(t_game *game)
-{
-	if (load_texture(game, game->texs->north, N_PATH) == 0)
-		return (clean_game(game));
-	if (load_texture(game, game->texs->south, S_PATH) == 0)
-		return (clean_game(game));
-	if (load_texture(game, game->texs->east, E_PATH) == 0)
-		return (clean_game(game));
-	if (load_texture(game, game->texs->west, W_PATH) == 0)
-		return (clean_game(game));
-}
-
-static int	load_texture(t_game *game, t_texture *tex, char *path)
-{
-	tex->img = mlx_xpm_file_to_image(game->mlx, path,
-			&tex->width, &tex->height);
-	if (tex->img == NULL)
-		return (0);
-	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp,
-			&tex->len_line, &tex->endian);
-	if (tex->addr == NULL)
-		return (0);
-	return (1);
 }

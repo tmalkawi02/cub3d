@@ -15,6 +15,7 @@
 #include "raycasters.h"
 #include <stdlib.h>
 #include "cleaners.h"
+#include "parsing.h"
 
 void	init_px_data(t_game *game)
 {
@@ -22,7 +23,7 @@ void	init_px_data(t_game *game)
 		return ;
 	game->px_data = malloc(sizeof(t_px_data));
 	if (game->px_data == NULL)
-		return (clean_game(game));
+		return (parsing_err("Error\nUnable to init pixels data", game, 0));
 	ft_bzero(game->px_data, sizeof(t_px_data));
 	game->px_data->img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (game->px_data->img == NULL)

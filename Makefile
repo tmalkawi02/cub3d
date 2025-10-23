@@ -17,6 +17,7 @@ HANDLERS_PATH=handlers
 CLEAN_PATH=cleaners
 RAYCASTERS_PATH=raycasters
 HELPERS_PATH=helpers
+PARSING_PATH=parsing
 BONUS_PATH=bonus
 
 SRC = $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
@@ -34,8 +35,7 @@ SRC = $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 
 SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
 
-SRC += $(SRC_PATH)/$(HELPERS_PATH)/get_map.c \
-	   $(SRC_PATH)/$(HELPERS_PATH)/is_wall.c \
+SRC += $(SRC_PATH)/$(HELPERS_PATH)/is_wall.c \
 	   $(SRC_PATH)/$(HELPERS_PATH)/is_player.c
 
 SRC += $(SRC_PATH)/$(HANDLERS_PATH)/k_press.c \
@@ -61,6 +61,15 @@ SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square_player.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square_bg.c \
+
+SRC += $(SRC_PATH)/$(PARSING_PATH)/parse_map.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/open_map.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/col_tex.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/parse_map_utils.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/tex_cont.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/utils.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/walls.c \
+	  $(SRC_PATH)/$(PARSING_PATH)/walls_cont.c
 
 BONUS = main_bonus.c \
 		$(SRC_PATH)/$(RAYCASTERS_PATH)/render_map_bonus.c \

@@ -31,29 +31,3 @@ int	check_textures(t_game *game)
 		return (-1);
 	return (0);
 }
-
-int	initialise_textures(t_textures *tex)
-{
-	t_texture *north;
-	t_texture *south;
-	t_texture *west;
-	t_texture *east;
-
-	north = (t_texture *)ft_calloc(1, sizeof(t_texture));
-	if (!north)
-		return (0);
-	south = (t_texture *)ft_calloc(1, sizeof(t_texture));
-	if (!south)
-		return (0);
-	east = (t_texture *)ft_calloc(1, sizeof(t_texture));
-	if (!east)
-		return (0);
-	west = (t_texture *)ft_calloc(1, sizeof(t_texture));
-	if (!west)
-		return (0);
-	tex->north = north;
-	tex->south = south;
-	tex->west = west;
-	tex->east = east;
-	return (1);
-}

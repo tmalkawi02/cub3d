@@ -42,7 +42,7 @@ void	clean_game(t_game *game)
 		free(game->mlx);
 		game->mlx = NULL;
 	}
-	//exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 static void	clean_textures(t_game *game)

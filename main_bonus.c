@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 	(void) av;
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
-	init_game(&game);
+	init_game(&game, av[1]);
 	mlx_hook(game.win, ON_DESTROY, ButtonPressMask, &destroy_button, &game);
 	mlx_hook(game.win, ON_KEYDOWN, KeyPressMask,
 		&k_press, &game);

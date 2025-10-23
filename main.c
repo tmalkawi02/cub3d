@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "handlers.h"
+#include "libft.h"
+#include "parsing.h"
 #include "raycasters_bonus.h"
 #include "mlx.h"
 #include "initializers.h"
@@ -33,8 +35,8 @@ int	main(int ac, char **av)
 	(void) av;
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
-	printf("%d\n", BONUS_CUB3D);
-	init_game(&game);
+	init_game(&game, av[1]);
+	ft_print_array((void **) game.map);
 	mlx_hook(game.win, ON_DESTROY, ButtonPressMask, &destroy_button, &game);
 	mlx_hook(game.win, ON_KEYDOWN, KeyPressMask,
 		&k_press, &game);
@@ -42,7 +44,6 @@ int	main(int ac, char **av)
 		&k_release, &game);
 	mlx_loop_hook(game.mlx, &render_loop, &game);
 	mlx_loop(game.mlx);
-	clean_game(&game);
 	return (EXIT_SUCCESS);
 }
 

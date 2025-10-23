@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "cleaners.h"
 #include "libft.h"
+#include "parsing.h"
 
 void	init_wall(t_game *game)
 {
@@ -21,6 +22,6 @@ void	init_wall(t_game *game)
 		return ;
 	game->wall = malloc(sizeof(t_wall));
 	if (game->wall == NULL)
-		return (clean_game(game));
+		return (parsing_err("Error\nUnable to init wall data", game, 0));
 	ft_bzero(game->wall, sizeof(t_wall));
 }

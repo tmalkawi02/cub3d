@@ -22,12 +22,12 @@ void	draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x)
 	calculate_texture_coord(ray, wall, tex);
 	y = -1;
 	while (++y < wall->draw_start)
-		render_pixel(game, x, y, CEILING_COL);
+		render_pixel(game, x, y, game->ceiling);
 	draw_textured_walls(game, wall, tex, x);
 	y = wall->draw_end + 1;
 	while (y < WIN_HEIGHT)
 	{
-		render_pixel(game, x, y, FLOOR_COL);
+		render_pixel(game, x, y, game->floor);
 		y++;
 	}
 }
