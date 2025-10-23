@@ -11,10 +11,7 @@
 /* ************************************************************************** */
 
 #include "handlers.h"
-#include "helpers.h"
-#include "initializers.h"
 #include "mlx.h"
-#include <math.h>
 #include "raycasters.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -35,6 +32,7 @@ int	render_loop(t_game *game)
 		calculate_wall(game);
 		draw_wall_strip(game, game->ray, game->wall, x);
 	}
+	render_map(game, game->minimap);
 	mlx_put_image_to_window(game->mlx, game->win, game->px_data->img, 0, 0);
 	return (EXIT_SUCCESS);
 }

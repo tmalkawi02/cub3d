@@ -57,7 +57,8 @@ SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/calculate_texture_coord.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/draw_textured_walls.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/draw_wall_strip.c \
-	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square.c
+	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square.c \
+	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_map.c
 
 LIB_PATH=lib
 COMPILER=clang

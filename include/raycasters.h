@@ -182,4 +182,6 @@ void			draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x);
 
 void			render_square(t_minimap *minimap, t_game *game);
 
+void			render_map(t_game *game, t_minimap *minimap);
+
 #endif
