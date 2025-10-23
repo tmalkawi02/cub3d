@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasters.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:06:55 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/08 14:06:55 by tmalkawi         ###   ########.fr       */
+/*   Updated: 2025/10/22 19:27:58 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_texture
 	int		endian;
 	int		width;
 	int		height;
+	char	*tex_path;
 }	t_texture;
 
 typedef struct s_ray_textures {
@@ -156,6 +157,16 @@ typedef struct s_game
 	t_ray		*ray;
 	t_px_data	*px_data;
 	t_minimap	*minimap;
+	void			*mlx;
+	void			*win;
+	char			**map;
+	t_camera		*cam;
+	t_textures		*texs;
+	t_player		*play;
+	int				n_rows;
+	int				n_cols;
+	unsigned long	floor;
+	unsigned long	ceiling;
 }	t_game;
 
 unsigned int	render_pixel_texture(unsigned int x,

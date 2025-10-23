@@ -1,0 +1,97 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
+/*   Updated: 2025/10/14 18:36:24 by aborel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "raycasters.h"
+#include "libft.h"
+
+int	parsing_err(char *s, t_game *game, int fd)
+{
+	while (*s)
+		write(2, s++, 1);
+	clean_game(game);
+	get_next_line(-1);
+	if (fd)
+		close(fd);
+	return (-1);
+}
+
+int	is_whitespace(char c)
+{
+	if (c && ((c == ' ' || (c > 8 && c < 14)) || c == '\0'))
+		return (1);
+	return (0);
+}
+
+int	skip_whitespace(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
+			i++;
+		else
+			return (i);
+	}
+	return (i);
+}
+
+int	wordcmp(char *s1, char *s2)
+{
+	int	i;
+	int	a;
+	int	b;
+
+	if (s1[0] == '\0' && s2[0] == '\0')
+		return (0);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		{
+			if (is_whitespace(s1[i]))
+				break;
+			else
+				i++;
+		}
+	a = s1[i];
+	b = s2[i];
+	if (is_whitespace((char)a))
+		a = 0;
+	if (is_whitespace((char)b))
+		b = 0;
+	return (a - b);
+}
+
+char	*next_word(char *s)
+{
+	int		i;
+	int		len;
+	char	*word;
+
+	if (!s)
+		return (NULL);
+	i = skip_whitespace(s);
+	len = 0;
+	while (s[i + len])
+	{
+		if (!s[i + len] || s[i + len] == ' ' || (s[i + len] >= 9 && s[i + len] <= 13))
+			break ;
+		len ++;
+	}
+	word = (char *)malloc(sizeof(char) * (len + 1));
+	if (!word)
+		return (0);
+	word[len] = '\0';
+	while (--len >= 0)
+		word[len] = s[i + len];
+	return (word);
+}
