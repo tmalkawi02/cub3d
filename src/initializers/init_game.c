@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:21:11 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/08 14:21:11 by tmalkawi         ###   ########.fr       */
+/*   Updated: 2025/10/23 20:36:33 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "cleaners.h"
 #include "helpers.h"
 #include "parsing.h"
+#include "libft.h"
 
 static void	set_address_of_textures(t_game *game);
 static int	load_texture(t_game *game, t_texture *tex, char *path);
