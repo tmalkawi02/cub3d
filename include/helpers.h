@@ -20,4 +20,6 @@ char	**get_map(void);
 
 bool	is_wall(t_game *game, int x, int y);
 
+bool	is_player(t_game *game, int x, int y);
+
 #endif

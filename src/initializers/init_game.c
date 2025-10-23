@@ -30,5 +30,6 @@ void	init_game(t_game *game)
 	init_textures(game);
 	init_wall(game);
 	init_ray(game);
+	init_minimap(game);
 	return ;
 }

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_square.c                                    :+:      :+:    :+:   */
+/*   is_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalkawi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 11:05:17 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/23 11:05:17 by tmalkawi         ###   ########.fr       */
+/*   Created: 2025/10/23 11:46:40 by tmalkawi          #+#    #+#             */
+/*   Updated: 2025/10/23 11:46:40 by tmalkawi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "raycasters.h"
-#include <stdio.h>
 
-void	render_square(t_minimap *minimap, t_game *game)
+bool	is_player(t_game *game, int x, int y)
 {
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < minimap->scale)
-	{
-		j = -1;
-		while (++j < minimap->scale)
-		{
-			render_pixel(game, minimap->square_x + i,
-				minimap->square_y + j, minimap->fg_color);
-		}
-	}
+	if (game->map[y][x] == 'N' || game->map[y][x] == 'S'
+			|| game->map[y][x] == 'E' || game->map[y][x] == 'W')
+		return (true);
+	return (false);
 }

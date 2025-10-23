@@ -29,6 +29,8 @@ void	clean_game(t_game *game)
 	if (game->wall)
 		free(game->wall);
 	clean_win_image(game);
+	if (game->minimap)
+		free(game->minimap);
 	if (game->mlx)
 	{
 		if (game->win)

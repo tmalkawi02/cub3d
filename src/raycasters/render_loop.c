@@ -33,6 +33,9 @@ int	render_loop(t_game *game)
 		draw_wall_strip(game, game->ray, game->wall, x);
 	}
 	render_map(game, game->minimap);
+	game->minimap->square_x = (int)game->play->pos_x * game->minimap->scale;
+	game->minimap->square_y = (int)game->play->pos_y * game->minimap->scale;
+	render_square_player(game->minimap, game);
 	mlx_put_image_to_window(game->mlx, game->win, game->px_data->img, 0, 0);
 	return (EXIT_SUCCESS);
 }

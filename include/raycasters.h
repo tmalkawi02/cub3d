@@ -62,6 +62,8 @@ typedef struct s_minimap
 	int	bg_color;
 	int	play_col;
 	int	scale;
+	int	square_x;
+	int	square_y;
 }	t_minimap;
 
 typedef struct s_player
@@ -181,6 +183,10 @@ void			calculate_wall(t_game *game);
 void			draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x);
 
 void			render_square(t_minimap *minimap, t_game *game);
+
+void			render_square_player(t_minimap *minimap, t_game *game);
+
+void			render_square_bg(t_minimap *minimap, t_game *game);
 
 void			render_map(t_game *game, t_minimap *minimap);
 
