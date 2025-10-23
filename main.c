@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "handlers.h"
-#include "raycasters.h"
+#include "raycasters_bonus.h"
 #include "mlx.h"
 #include "initializers.h"
 #include "cleaners.h"
@@ -35,7 +36,8 @@ int	main(int ac, char **av)
 		&k_press, &game);
 	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
 		&k_release, &game);
-	mlx_loop_hook(game.mlx, &render_loop, &game);
+	printf("BONUS = %d\n", BONUS_CUB3D);
+	mlx_loop_hook(game.mlx, &render_loop_bonus, &game);
 	mlx_loop(game.mlx);
 	clean_game(&game);
 	return (EXIT_SUCCESS);

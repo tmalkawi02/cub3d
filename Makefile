@@ -17,6 +17,8 @@ HANDLERS_PATH=handlers
 CLEAN_PATH=cleaners
 RAYCASTERS_PATH=raycasters
 HELPERS_PATH=helpers
+BONUS_PATH=bonus
+
 SRC=main.c \
 
 SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
@@ -61,26 +63,37 @@ SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square_player.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square_bg.c \
-	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_map.c
+
+BONUS = $(SRC_PATH)/$(RAYCASTERS_PATH)/render_map_bonus.c \
+		$(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop_bonus.c \
+		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_down_bonus.c \
+		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_up_bonus.c \
+		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_right_bonus.c \
+		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_left_bonus.c
 
 LIB_PATH=lib
 COMPILER=clang
 INCLUDES = -I./lib/mlx/ -I/usr/include -I./include/ -I./lib/libft/include/
 LIBRARIES = -L$(LIB_PATH)/libft/build/bin/ -L$(LIB_PATH)/mlx/ -L/usr/lib -lft -lmlx -Ilmx -lXext -lX11 -lm -lz
 COMPILER_ARGS=-Wall -Wextra -Werror -g3 -O3
+COMPILER_ARGS_BONUS=-D BONUS_CUB3D=1 -Wall -Wextra -Werror -g3 -O3
 OBJECTS=$(addprefix obj/, $(patsubst %.c, %.o, $(SRC)))
-
+OBJECTS_BONUS=$(addprefix obj/, $(patsubst %.c, %.o, $(BONUS)))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJECTS) $(OBJECTS_BONUS)
 	make -C $(LIB_PATH)/libft/
 	make -C $(LIB_PATH)/mlx/
-	$(COMPILER) $(COMPILER_ARGS) $(MAIN) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $@
+	$(COMPILER) $(COMPILER_ARGS) $(OBJECTS_BONUS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $@
+
+bonus: $(OBJECTS_BONUS)
+	$(COMPILER) $(COMPILER_ARGS_BONUS) $(OBJECTS_BONUS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $@
 
 obj/%.o: %.c
 	@mkdir -p $(dir $(NAME))
 	@mkdir -p $(dir $(OBJECTS))
+	@mkdir -p $(dir $(OBJECTS_BONUS))
 	$(COMPILER) $(COMPILER_ARGS) $(INCLUDES) -c $< -o $@
 
 clean:

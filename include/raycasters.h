@@ -187,7 +187,4 @@ void			render_square(t_minimap *minimap, t_game *game);
 void			render_square_player(t_minimap *minimap, t_game *game);
 
 void			render_square_bg(t_minimap *minimap, t_game *game);
-
-void			render_map(t_game *game, t_minimap *minimap);
-
 #endif
