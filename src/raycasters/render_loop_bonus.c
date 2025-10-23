@@ -23,7 +23,6 @@ int	render_loop_bonus(t_game *game)
 	int	x;
 
 	x = -1;
-	printf("lol\n");
 	clear_screen(game);
 	player_move(game);
 	while (++x < WIN_WIDTH)

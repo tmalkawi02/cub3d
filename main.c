@@ -20,6 +20,9 @@
 #include <X11/X.h>
 
 #define MAX_ARGS 2
+#ifndef BONUS_CUB3D
+# define BONUS_CUB3D 0
+#endif
 
 static int	destroy_button(t_game *game);
 
@@ -30,14 +33,14 @@ int	main(int ac, char **av)
 	(void) av;
 	if (ac != MAX_ARGS)
 		return (EXIT_FAILURE);
+	printf("%d\n", BONUS_CUB3D);
 	init_game(&game);
 	mlx_hook(game.win, ON_DESTROY, ButtonPressMask, &destroy_button, &game);
 	mlx_hook(game.win, ON_KEYDOWN, KeyPressMask,
 		&k_press, &game);
 	mlx_hook(game.win, ON_KEYUP, KeyReleaseMask,
 		&k_release, &game);
-	printf("BONUS = %d\n", BONUS_CUB3D);
-	mlx_loop_hook(game.mlx, &render_loop_bonus, &game);
+	mlx_loop_hook(game.mlx, &render_loop, &game);
 	mlx_loop(game.mlx);
 	clean_game(&game);
 	return (EXIT_SUCCESS);

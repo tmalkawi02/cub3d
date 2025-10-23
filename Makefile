@@ -19,9 +19,7 @@ RAYCASTERS_PATH=raycasters
 HELPERS_PATH=helpers
 BONUS_PATH=bonus
 
-SRC=main.c \
-
-SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
+SRC = $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_cam.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_textures.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player.c \
@@ -64,12 +62,15 @@ SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square_player.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square_bg.c \
 
-BONUS = $(SRC_PATH)/$(RAYCASTERS_PATH)/render_map_bonus.c \
+BONUS = main_bonus.c \
+		$(SRC_PATH)/$(RAYCASTERS_PATH)/render_map_bonus.c \
 		$(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop_bonus.c \
 		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_down_bonus.c \
 		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_up_bonus.c \
 		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_right_bonus.c \
 		$(SRC_PATH)/$(HANDLERS_PATH)/player_move_left_bonus.c
+
+OBL = main.c 
 
 LIB_PATH=lib
 COMPILER=clang
@@ -78,14 +79,15 @@ LIBRARIES = -L$(LIB_PATH)/libft/build/bin/ -L$(LIB_PATH)/mlx/ -L/usr/lib -lft -l
 COMPILER_ARGS=-Wall -Wextra -Werror -g3 -O3
 COMPILER_ARGS_BONUS=-D BONUS_CUB3D=1 -Wall -Wextra -Werror -g3 -O3
 OBJECTS=$(addprefix obj/, $(patsubst %.c, %.o, $(SRC)))
+OBL_OBJECTS=$(addprefix obj/, $(patsubst %.c, %.o, $(OBL)))
 OBJECTS_BONUS=$(addprefix obj/, $(patsubst %.c, %.o, $(BONUS)))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(OBJECTS_BONUS)
+$(NAME): $(OBJECTS) $(OBJECTS_BONUS) $(OBL_OBJECTS)
 	make -C $(LIB_PATH)/libft/
 	make -C $(LIB_PATH)/mlx/
-	$(COMPILER) $(COMPILER_ARGS) $(OBJECTS_BONUS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $@
+	$(COMPILER) $(COMPILER_ARGS) $(OBL_OBJECTS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $@
 
 bonus: $(OBJECTS_BONUS)
 	$(COMPILER) $(COMPILER_ARGS_BONUS) $(OBJECTS_BONUS) $(OBJECTS) $(INCLUDES) $(LIBRARIES) -o $@

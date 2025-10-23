@@ -13,9 +13,9 @@
 #ifndef RAYCASTERS_BONUS_H
 # define RAYCASTERS_BONUS_H
 
-# ifndef BONUS_CUB3D
-#  define BONUS_CUB3D 0
-# endif
+// # ifndef BONUS_CUB3D
+// #  define BONUS_CUB3D 0
+// # endif
 
 # include "raycasters.h"
 
