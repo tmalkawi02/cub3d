@@ -55,6 +55,13 @@ typedef enum e_event {
  * @field plane_x Camera Plane X
  * @field plane_y Camera Plane Y
  */
+
+typedef struct s_minimap
+{
+	int	fg_color;
+	int	play_col;
+	int	scale;
+}	t_minimap;
 typedef struct s_player
 {
 	int		kup;
