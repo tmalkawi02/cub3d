@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/23 21:03:51 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/23 21:11:27 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	parsing_err(char *s, t_game *game, int fd)
 	if (fd)
 		close(fd);
 	get_next_line(-1);
-	if (game->map)
-		free_split(game->map);
 	clean_game(game);
 }
 
