@@ -59,6 +59,7 @@ typedef enum e_event {
 typedef struct s_minimap
 {
 	int	fg_color;
+	int	bg_color;
 	int	play_col;
 	int	scale;
 }	t_minimap;
@@ -152,6 +153,7 @@ typedef struct s_game
 	t_wall		*wall;
 	t_ray		*ray;
 	t_px_data	*px_data;
+	t_minimap	*minimap;
 }	t_game;
 
 unsigned int	render_pixel_texture(unsigned int x,

@@ -37,4 +37,6 @@ void	init_player_backward_direction(t_game *game);
 
 void	init_player_forward_direction(t_game *game);
 
+void	init_minimap(t_game *game);
+
 #endif // !INITIALIZERS_H

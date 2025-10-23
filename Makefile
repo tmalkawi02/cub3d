@@ -29,7 +29,8 @@ SRC += $(SRC_PATH)/$(INITIALIZERS_PATH)/init_game.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_backward_direction.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_right_direction.c \
 	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_left_direction.c \
-	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_forward_direction.c
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_player_forward_direction.c \
+	   $(SRC_PATH)/$(INITIALIZERS_PATH)/init_minimap.c
 
 SRC += $(SRC_PATH)/$(CLEAN_PATH)/clean_game.c
 
@@ -55,7 +56,7 @@ SRC += $(SRC_PATH)/$(RAYCASTERS_PATH)/render_loop.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/select_wall_texture.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/calculate_texture_coord.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/draw_textured_walls.c \
-	   $(SRC_PATH)/$(RAYCASTERS_PATH)/draw_wall_strip.c
+	   $(SRC_PATH)/$(RAYCASTERS_PATH)/draw_wall_strip.c \
 	   $(SRC_PATH)/$(RAYCASTERS_PATH)/render_square.c
 
 LIB_PATH=lib
