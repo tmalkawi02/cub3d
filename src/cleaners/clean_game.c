@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:02:15 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/14 18:45:02 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/23 21:07:50 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 
 static void	clean_textures(t_game *game);
 static void	clean_win_image(t_game *game);
+void	free_split(char **str);
 
 void	clean_game(t_game *game)
 {
+	if (game->map)
+		free_split(game->map);
 	clean_textures(game);
 	if (game->cam)
 		free(game->cam);
@@ -42,6 +45,7 @@ void	clean_game(t_game *game)
 		free(game->mlx);
 		game->mlx = NULL;
 	}
+	free(game);
 	exit(EXIT_FAILURE);
 }
 

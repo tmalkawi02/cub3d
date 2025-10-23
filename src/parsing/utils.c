@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 18:36:24 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/23 21:03:51 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,28 @@
 #include "cleaners.h"
 #include "libft.h"
 
+void	free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 void	parsing_err(char *s, t_game *game, int fd)
 {
 	while (*s)
 		write(2, s++, 1);
 	if (fd)
 		close(fd);
+	get_next_line(-1);
+	if (game->map)
+		free_split(game->map);
 	clean_game(game);
 }
 

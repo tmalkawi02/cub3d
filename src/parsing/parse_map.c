@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/22 19:29:05 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/23 21:09:00 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char **fill_rows(char fd, char **map, int rows, int cols)
 		len = valid_line(line, &pos);
 		if (!len)
 			return (map_error(line, map));
-		map[i] = ft_calloc(cols, sizeof(char));
+		map[i] = ft_calloc(cols + 1, sizeof(char));
 		if (!map[i])
 			return (map_error(line, map));
 		map[i] = copy_wout_nl(line, map[i], cols);
@@ -60,6 +60,7 @@ void	get_n_rows(int fd, t_game *game)
 		temp_cols = ft_strlen(line);
 		if (temp_cols > cols)
 			cols = temp_cols;
+		free(line);
     }
     close(fd);
 	game->n_rows = rows;
@@ -104,4 +105,5 @@ void	parse_map(char *mapfile, t_game *game)
 	if (build_map(map_fd, lines_read, mapfile, game) == -1)
 		return (parsing_err("Error\nCould not build map\n", game, map_fd));
 	close(map_fd);
+	get_next_line(-1);
 }
