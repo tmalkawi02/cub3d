@@ -62,6 +62,7 @@ typedef struct s_minimap
 	int	play_col;
 	int	scale;
 }	t_minimap;
+
 typedef struct s_player
 {
 	int		kup;
@@ -176,5 +177,7 @@ void			render_pixel(t_game *game, unsigned int x,
 void			calculate_wall(t_game *game);
 
 void			draw_wall_strip(t_game *game, t_ray *ray, t_wall *wall, int x);
+
+void			render_square(t_minimap *minimap, t_game *game);
 
 #endif
