@@ -147,22 +147,16 @@ typedef struct s_camera
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	char		**map;
-	t_camera	*cam;	
-	t_textures	*texs;
-	t_player	*play;
-	t_wall		*wall;
-	t_ray		*ray;
-	t_px_data	*px_data;
-	t_minimap	*minimap;
 	void			*mlx;
 	void			*win;
 	char			**map;
-	t_camera		*cam;
+	t_camera		*cam;	
 	t_textures		*texs;
 	t_player		*play;
+	t_wall			*wall;
+	t_ray			*ray;
+	t_px_data		*px_data;
+	t_minimap		*minimap;
 	int				n_rows;
 	int				n_cols;
 	unsigned long	floor;
