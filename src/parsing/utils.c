@@ -14,15 +14,13 @@
 #include "cleaners.h"
 #include "libft.h"
 
-int	parsing_err(char *s, t_game *game, int fd)
+void	parsing_err(char *s, t_game *game, int fd)
 {
 	while (*s)
 		write(2, s++, 1);
-	clean_game(game);
-	get_next_line(-1);
 	if (fd)
 		close(fd);
-	return (-1);
+	clean_game(game);
 }
 
 int	is_whitespace(char c)

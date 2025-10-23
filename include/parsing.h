@@ -16,11 +16,12 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "raycasters.h"
 
 int		parse_map(char *mapfile, t_game *game);
 int		open_map(int *map_fd, char *mapfile);
 int		initialise_textures(t_textures *tex);
-int		parsing_err(char *s, t_game *game, int fd);
+void	parsing_err(char *s, t_game *game, int fd);
 int		assign_textures(int fd, int *lines_read, t_game *game);
 int		assign_colours(unsigned long *ptr, char *line);
 int		is_whitespace(char c);
