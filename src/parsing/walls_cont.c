@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:28:11 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/22 19:31:00 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/28 15:30:57 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	check_room_col(char **map, int row, int col, t_game *w)
 		return (row);
 	if (map[row][col] != '0' && !is_cardinal(map[row][col]))
 		return (0);
-	while (row < w->n_rows && (map[row][col] == '0' || is_cardinal(map[row][col])))
+	while (row < w->n_rows && (map[row][col] == '0' || \
+		is_cardinal(map[row][col])))
 		row++;
 	if (row == w->n_rows || map[row][col] != '1')
 		return (0);
