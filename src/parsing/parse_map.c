@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/23 21:20:35 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/28 15:25:45 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	get_n_rows(int fd, t_game *game)
 	game->n_cols = cols;
 }
 
-int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
+int	build_map(int fd, char *mapfile, t_game *game)
 {
 	int		i;
 	char	*line;
@@ -78,7 +78,7 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 		return (-1);
 	i = 0;
 	open_map(&fd, mapfile);
-	while (i++ < lines_read - 1)
+	while (i++ < game->lines_read - 1)
 	{
 		line = get_next_line(fd);
 		free(line);
@@ -92,17 +92,15 @@ int	build_map(int fd, int lines_read, char *mapfile, t_game *game)
 void	parse_map(char *mapfile, t_game *game)
 {
 	int	map_fd;
-	int	lines_read;
 
 	map_fd = 0;
-	lines_read = 0;
 	if (open_map(&map_fd, mapfile) == -1)
 		return (parsing_err("Error\nCould not open map\n", game, 0));
-	if (assign_textures(map_fd, &lines_read, game) == -1)
+	if (assign_textures(map_fd, game) == -1)
 		return (parsing_err("Error\nCould not assign textures\n", game, map_fd));
 	if (check_textures(game) == -1)
 		return (parsing_err("Error\nNot all textures assigned\n", game, map_fd));
-	if (build_map(map_fd, lines_read, mapfile, game) == -1)
+	if (build_map(map_fd, mapfile, game) == -1)
 		return (parsing_err("Error\nCould not build map\n", game, map_fd));
 	close(map_fd);
 	get_next_line(-1);

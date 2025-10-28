@@ -6,20 +6,13 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:20:52 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 18:09:32 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/28 15:28:32 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasters.h"
 #include "libft.h"
 #include "parsing.h"
-
-void	free_assign_textures(char *line, char *id)
-{
-	free(line);
-	if (id)
-		free(id);
-}
 
 int	check_textures(t_game *game)
 {
@@ -30,4 +23,13 @@ int	check_textures(t_game *game)
 	if (game->floor == 0 || game->ceiling == 0)
 		return (-1);
 	return (0);
+}
+
+char	*assign_textures_cont(char *line, t_game *game, int fd)
+{
+	if (line)
+		free(line);
+	line = get_next_line(fd);
+	game->lines_read++;
+	return (line);
 }

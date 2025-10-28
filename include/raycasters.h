@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:06:55 by tmalkawi          #+#    #+#             */
-/*   Updated: 2025/10/22 19:27:58 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/28 15:23:13 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ typedef struct s_game
 	t_minimap		*minimap;
 	int				n_rows;
 	int				n_cols;
+	int				lines_read;
 	unsigned long	floor;
 	unsigned long	ceiling;
 }	t_game;
