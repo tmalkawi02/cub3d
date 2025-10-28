@@ -6,14 +6,13 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:04:14 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/14 12:49:32 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/23 21:19:58 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasters.h"
 #include "libft.h"
 #include "parsing.h"
-
 
 /**
  * @brief checks the map is a ".cub" file, opens the map

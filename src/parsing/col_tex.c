@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/23 20:57:45 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/28 14:48:53 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	set_texture(t_game *game, char *line, char *id)
 		ret = assign_colours(&game->floor, line);
 	else
 		ret = -1;
-	free(line);
 	if (id)
 		free(id);
 	return (ret);
@@ -132,7 +131,11 @@ int	assign_textures(int fd, int *lines_read, t_game *game)
 			continue ;
 		}
 		if (set_texture(game, &line[i], id) == -1)
+		{
+			free (line);
 			return (-1);
+		}
+		free(line);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:07:24 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/23 21:09:00 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/23 21:20:35 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "parsing.h"
 #include "initializers.h"
 
-char **fill_rows(char fd, char **map, int rows, int cols)
+char	**fill_rows(char fd, char **map, int rows, int cols)
 {
 	int		i;
 	char	*line;
@@ -52,7 +52,7 @@ void	get_n_rows(int fd, t_game *game)
 	rows = 1;
 	cols = 0;
 	while (1)
-    {
+	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
@@ -61,8 +61,8 @@ void	get_n_rows(int fd, t_game *game)
 		if (temp_cols > cols)
 			cols = temp_cols;
 		free(line);
-    }
-    close(fd);
+	}
+	close(fd);
 	game->n_rows = rows;
 	game->n_cols = cols;
 }

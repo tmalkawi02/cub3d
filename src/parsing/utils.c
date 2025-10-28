@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:07:31 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/23 21:11:27 by aborel           ###   ########.fr       */
+/*   Updated: 2025/10/28 14:38:36 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ int	wordcmp(char *s1, char *s2)
 		return (0);
 	i = 0;
 	while (s1[i] && s2[i] && s1[i] == s2[i])
-		{
-			if (is_whitespace(s1[i]))
-				break;
-			else
-				i++;
-		}
+	{
+		if (is_whitespace(s1[i]))
+			break ;
+		else
+			i++;
+	}
 	a = s1[i];
 	b = s2[i];
 	if (is_whitespace((char)a))
@@ -98,7 +98,7 @@ char	*next_word(char *s)
 	{
 		if (!s[i + len] || s[i + len] == ' ' || (s[i + len] >= 9 && s[i + len] <= 13))
 			break ;
-		len ++;
+		len++;
 	}
 	word = (char *)malloc(sizeof(char) * (len + 1));
 	if (!word)
