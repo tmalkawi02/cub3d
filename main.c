@@ -38,7 +38,6 @@ int	main(int ac, char **av)
 	if (!game)
 		return (EXIT_FAILURE);
 	init_game(game, av[1]);
-	ft_print_array((void **) game->map);
 	mlx_hook(game->win, ON_DESTROY, ButtonPressMask, &destroy_button, game);
 	mlx_hook(game->win, ON_KEYDOWN, KeyPressMask,
 		&k_press, game);

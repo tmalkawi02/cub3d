@@ -13,7 +13,6 @@
 #include "helpers.h"
 #include <stdbool.h>
 
-// TODO: add map metrics bounds
 bool	is_wall(t_game *game, int x, int y)
 {
 	char	c;
