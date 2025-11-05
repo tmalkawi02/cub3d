@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/10/28 15:27:46 by aborel           ###   ########.fr       */
+/*   Updated: 2025/11/05 14:40:24 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	assign_colours(unsigned long *ptr, char *line)
 	b = ft_atoi(&line[i]);
 	i += next_colour(&line[i], 1);
 	if (line[i])
+		return (-1);
+	if (r > 255 || g > 255 || b > 255)
 		return (-1);
 	*ptr = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 	return (0);
