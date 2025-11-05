@@ -6,7 +6,7 @@
 /*   By: aborel <aborel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:51:55 by aborel            #+#    #+#             */
-/*   Updated: 2025/11/05 14:40:24 by aborel           ###   ########.fr       */
+/*   Updated: 2025/11/05 14:57:59 by aborel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	assign_colours(unsigned long *ptr, char *line)
 		return (-1);
 	if (r > 255 || g > 255 || b > 255)
 		return (-1);
-	*ptr = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	*ptr = ((unsigned long)r << 16) | ((unsigned long)g << 8) \
+		| (unsigned long)b;
 	return (0);
 }
 
