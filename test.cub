@@ -3,7 +3,7 @@ SO ./assets/two.xpm
 WE ./assets/three.xpm
 EA ./assets/four.xpm
 
-F 38,139,7
+F 38,139,                        			56
 C 98,193,229
 
         1111111111111111111111111
